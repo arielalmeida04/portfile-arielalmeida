@@ -1,8 +1,9 @@
 ---
 /**
- * Tux (pinguino de Linux) a partir del arte monocromo de freesvg.org.
- * En tema claro se usa el arte original (cuerpo negro, panza blanca) y en tema
- * oscuro se invierte a blanco solido para que siga siendo visible.
+ * Tux (pinguino de Linux) con una imagen por tema.
+ * - Tema claro: arte monocromo de freesvg.org (tux-claro.png).
+ * - Tema oscuro: arte de pngwing.com, recortado a blanco sobre transparente
+ *   (tux-oscuro.png) para que se vea sobre el fondo grafito.
  */
 interface Props {
 	/** Clase opcional para dimensionar/ubicar el icono. */
@@ -12,24 +13,47 @@ interface Props {
 const { class: clase } = Astro.props;
 ---
 
-<img
-	src="/img/tux.png"
-	alt=""
-	aria-hidden="true"
-	draggable="false"
-	class:list={['icono-tux', clase]}
-/>
+<span class:list={['icono-tux', clase]}>
+	<img
+		src="/img/tux-claro.png"
+		alt=""
+		aria-hidden="true"
+		draggable="false"
+		class="icono-tux__img"
+	/>
+	<img
+		src="/img/tux-oscuro.png"
+		alt=""
+		aria-hidden="true"
+		draggable="false"
+		class="icono-tux__img icono-tux__img--oscuro"
+	/>
+</span>
 
 <style>
 	.icono-tux {
 		display: inline-block;
 		flex-shrink: 0;
+	}
+
+	.icono-tux__img {
+		display: block;
+		width: 100%;
+		height: 100%;
 		object-fit: contain;
 		-webkit-user-select: none;
 		user-select: none;
 	}
 
-	:global([data-tema='oscuro']) .icono-tux {
-		filter: brightness(0) invert(1);
+	.icono-tux__img--oscuro {
+		display: none;
+	}
+
+	:global([data-tema='oscuro']) .icono-tux__img {
+		display: none;
+	}
+
+	:global([data-tema='oscuro']) .icono-tux__img--oscuro {
+		display: block;
 	}
 </style>
