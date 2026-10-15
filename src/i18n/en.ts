@@ -52,17 +52,136 @@ export const en: Textos = {
 	sobreMi: {
 		titulo: 'About me',
 		estado: 'Available for new projects',
-		pieFoto: 'Ariel Almeida',
-		altFoto: 'Professional photo of Ariel Almeida',
-		parrafos: [
-			'I am a developer passionate about building digital products that make an impact. I am comfortable working on the front-end with Astro and CSS, and on the back-end with Java.',
-			'I am looking for developer roles or freelance projects where I can apply best practices, performance and attention to detail.',
+		altFoto: 'Professional photo of Martín Ariel Almeida',
+		nombre: 'Martín Ariel Almeida',
+		rol: 'Java Backend Developer',
+		presentacion: [
+			'I am Martín Ariel Almeida, a University Technician in Programming from the Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
+			'I am focusing my career on backend development, with a special interest in the Java and Spring Boot ecosystem, REST API design, database management and the development of robust, secure and scalable web applications.',
+			'I am interested in building solutions that solve real problems, applying good programming practices, design principles, software architecture and modern development tools.',
+			'My professional goal is to join a development team where I can contribute my knowledge, keep growing as a backend developer and take part in quality projects, especially in fintech, banking and enterprise environments.',
 		],
-		datos: [
-			{ etiqueta: 'Location', valor: 'Argentina' },
-			{ etiqueta: 'Focus', valor: 'Front-end / Java Back-end' },
-			{ etiqueta: 'Languages', valor: 'Spanish, English, Portuguese' },
-		],
+		formacion: {
+			etiqueta: 'Education',
+			titulo: 'University Technician in Programming',
+			campos: [
+				{ etiqueta: 'Institution', valor: 'Universidad Tecnológica Nacional (UTN)' },
+				{ etiqueta: 'Faculty', valor: 'Facultad Regional Paraná' },
+				{ etiqueta: 'Location', valor: 'Paraná, Entre Ríos, Argentina' },
+				{ etiqueta: 'Status', valor: 'Degree completed' },
+			],
+		},
+		stacks: {
+			principal: {
+				etiqueta: 'Main stack',
+				descripcion: 'Technologies I work with in the greatest depth.',
+				items: [
+					{
+						nombre: 'Java',
+						descripcion: 'Primary language for business logic and backend applications.',
+						destacado: true,
+					},
+					{
+						nombre: 'Spring Boot',
+						descripcion: 'Backend applications, services and REST APIs.',
+						destacado: true,
+					},
+					{
+						nombre: 'Spring Security',
+						descripcion: 'Authentication, authorization and endpoint protection.',
+						destacado: true,
+					},
+					{
+						nombre: 'JWT',
+						descripcion: 'Tokens for authentication and secure sessions.',
+						destacado: true,
+					},
+					{
+						nombre: 'MySQL',
+						descripcion: 'Relational modeling, queries and data persistence.',
+						destacado: true,
+					},
+					{
+						nombre: 'REST API',
+						descripcion: 'Design and implementation of services between applications.',
+						destacado: true,
+					},
+					{
+						nombre: 'Hibernate',
+						descripcion: 'Object-relational mapping (JPA) and database access.',
+						destacado: false,
+					},
+					{
+						nombre: 'Maven',
+						descripcion: 'Dependency management and building Java projects.',
+						destacado: false,
+					},
+					{
+						nombre: 'Angular',
+						descripcion: 'Web interfaces and integration with backend services.',
+						destacado: false,
+					},
+					{
+						nombre: 'TypeScript',
+						descripcion: 'Static typing in frontend development.',
+						destacado: false,
+					},
+					{ nombre: 'Git', descripcion: 'Source code version control.', destacado: false },
+					{ nombre: 'GitHub', descripcion: 'Repositories and collaboration.', destacado: false },
+					{
+						nombre: 'Debian',
+						descripcion: 'Base distribution of my development environment.',
+						destacado: false,
+					},
+					{
+						nombre: 'Linux',
+						descripcion: 'Primary operating system and command line.',
+						destacado: false,
+					},
+					{
+						nombre: 'Ubuntu',
+						descripcion: 'Distribution used on servers and development.',
+						destacado: false,
+					},
+				],
+			},
+			secundario: {
+				etiqueta: 'Secondary stack',
+				descripcion: 'Technologies that complement my main stack.',
+				items: [
+					'PostgreSQL',
+					'MongoDB',
+					'Docker',
+					'JUnit 5',
+					'Mockito',
+					'HTML5',
+					'CSS',
+					'JavaScript',
+				],
+			},
+			complementario: {
+				etiqueta: 'Complementary stack',
+				descripcion: 'Tools and knowledge that broaden my profile.',
+				items: [
+					'Python',
+					'FastAPI',
+					'AWS',
+					'Node.js',
+					'npm',
+					'Bootstrap',
+					'Zsh',
+					'Cybersecurity',
+					'React',
+					'Postman',
+					'Swagger',
+					'Javadoc',
+				],
+			},
+		},
+		idiomas: {
+			etiqueta: 'Languages',
+			valores: ['Spanish', 'English', 'Portuguese'],
+		},
 	},
 
 	proyectos: {

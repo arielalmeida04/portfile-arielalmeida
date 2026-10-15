@@ -1,6 +1,7 @@
 ---
 import '../estilos/sobre-mi.css';
 import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+import IconoTecnologia from './IconoTecnologia.astro';
 
 interface Props {
 	/** Idioma de los textos de la sección. */
@@ -9,18 +10,18 @@ interface Props {
 
 const { idioma = idiomaPorDefecto } = Astro.props;
 const textos = obtenerTextos(idioma);
-const { titulo, estado, pieFoto, altFoto, parrafos, datos } = textos.sobreMi;
+const { titulo, estado, altFoto, nombre, rol, presentacion, formacion, stacks, idiomas } = textos.sobreMi;
 ---
 
 <section id="sobre-mi" class="seccion sobre-mi" aria-labelledby="titulo-sobre-mi">
 	<div class="contenedor">
 		<h2 id="titulo-sobre-mi" class="titulo-seccion revelar">{titulo}</h2>
 
-		<div class="sobre-mi__contenido">
-			<figure class="sobre-mi__marco revelar" style="--retardo-revelado: 0.1s;">
-				<div class="sobre-mi__marco-imagen">
+		<div class="perfil">
+			<figure class="perfil__foto revelar" style="--retardo-revelado: 0.05s;">
+				<div class="perfil__foto-marco">
 					<img
-						class="sobre-mi__foto"
+						class="perfil__foto-img"
 						src="/img/foto-perfil.jpg"
 						alt={altFoto}
 						width="900"
@@ -28,26 +29,102 @@ const { titulo, estado, pieFoto, altFoto, parrafos, datos } = textos.sobreMi;
 						loading="lazy"
 						decoding="async"
 					/>
+					<span class="perfil__estado">{estado}</span>
 				</div>
-				<figcaption class="sobre-mi__pie">{pieFoto}</figcaption>
 			</figure>
 
-			<div class="sobre-mi__texto revelar" style="--retardo-revelado: 0.2s;">
-				<span class="sobre-mi__estado">{estado}</span>
+			<div class="perfil__intro revelar" style="--retardo-revelado: 0.1s;">
+				<header class="perfil__encabezado">
+					<h3 class="perfil__nombre">{nombre}</h3>
+					<p class="perfil__rol">{rol}</p>
+				</header>
 
-				{parrafos.map((parrafo) => <p class="sobre-mi__parrafo">{parrafo}</p>)}
+				<div class="perfil__texto">
+					{presentacion.map((parrafo) => <p class="perfil__parrafo">{parrafo}</p>)}
+				</div>
 
-				<dl class="sobre-mi__datos">
+				<aside class="formacion">
+					<span class="perfil__etiqueta">{formacion.etiqueta}</span>
+					<p class="formacion__titulo">{formacion.titulo}</p>
+					<dl class="formacion__campos">
+						{
+							formacion.campos.map((campo) => (
+								<div class="formacion__campo">
+									<dt class="formacion__campo-etiqueta">{campo.etiqueta}</dt>
+									<dd class="formacion__campo-valor">{campo.valor}</dd>
+								</div>
+							))
+						}
+					</dl>
+				</aside>
+			</div>
+		</div>
+
+		<div class="stacks">
+			<section class="stack stack--principal revelar" aria-labelledby="titulo-stack-principal">
+				<header class="stack__encabezado">
+					<h3 id="titulo-stack-principal" class="stack__etiqueta">{stacks.principal.etiqueta}</h3>
+					<p class="stack__descripcion">{stacks.principal.descripcion}</p>
+				</header>
+				<ul class="tarjetas-tech" role="list">
 					{
-						datos.map((dato) => (
-							<div class="sobre-mi__dato">
-								<dt class="sobre-mi__dato-etiqueta">{dato.etiqueta}</dt>
-								<dd class="sobre-mi__dato-valor">{dato.valor}</dd>
-							</div>
+						stacks.principal.items.map((item) => (
+							<li class:list={['tarjeta-tech', { 'tarjeta-tech--destacada': item.destacado }]}>
+								<IconoTecnologia tecnologia={item.nombre} />
+								<div class="tarjeta-tech__cuerpo">
+									<span class="tarjeta-tech__nombre">{item.nombre}</span>
+									<p class="tarjeta-tech__texto">{item.descripcion}</p>
+								</div>
+							</li>
 						))
 					}
-				</dl>
-			</div>
+				</ul>
+			</section>
+
+			<section class="stack stack--secundario revelar" aria-labelledby="titulo-stack-secundario">
+				<header class="stack__encabezado">
+					<h3 id="titulo-stack-secundario" class="stack__etiqueta">{stacks.secundario.etiqueta}</h3>
+					<p class="stack__descripcion">{stacks.secundario.descripcion}</p>
+				</header>
+				<ul class="chips" role="list">
+					{
+						stacks.secundario.items.map((tecnologia) => (
+							<li class="chip">
+								<IconoTecnologia tecnologia={tecnologia} />
+								<span>{tecnologia}</span>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="stack stack--complementario revelar" aria-labelledby="titulo-stack-complementario">
+				<header class="stack__encabezado">
+					<h3 id="titulo-stack-complementario" class="stack__etiqueta">
+						{stacks.complementario.etiqueta}
+					</h3>
+					<p class="stack__descripcion">{stacks.complementario.descripcion}</p>
+				</header>
+				<ul class="chips chips--tenue" role="list">
+					{
+						stacks.complementario.items.map((tecnologia) => (
+							<li class="chip">
+								<IconoTecnologia tecnologia={tecnologia} />
+								<span>{tecnologia}</span>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="stack stack--idiomas revelar" aria-labelledby="titulo-idiomas">
+				<header class="stack__encabezado">
+					<h3 id="titulo-idiomas" class="stack__etiqueta">{idiomas.etiqueta}</h3>
+				</header>
+				<ul class="idiomas" role="list">
+					{idiomas.valores.map((valor) => <li class="idioma">{valor}</li>)}
+				</ul>
+			</section>
 		</div>
 	</div>
 </section>

@@ -75,6 +75,9 @@
 	--espacio-lg: 3rem;
 	--espacio-xl: 5rem;
 
+	/* Separación vertical entre secciones (mayor que el ritmo interno) */
+	--espacio-seccion: clamp(4.5rem, 3rem + 5vw, 7rem);
+
 	--ancho-max: 1160px;
 	--ancho-texto: 62ch;
 	--navbar-alto: 64px;

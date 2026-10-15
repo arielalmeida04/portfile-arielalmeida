@@ -133,7 +133,7 @@ body::before {
 .seccion {
 	position: relative;
 	z-index: var(--z-contenido);
-	padding-block: var(--espacio-xl);
+	padding-block: var(--espacio-seccion);
 	scroll-margin-top: calc(var(--navbar-alto) + 1.5rem);
 }
 

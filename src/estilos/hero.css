@@ -8,7 +8,7 @@
 	align-items: center;
 	min-height: 100svh;
 	padding-top: calc(var(--navbar-alto) + var(--espacio-lg));
-	padding-bottom: var(--espacio-xl);
+	padding-bottom: var(--espacio-seccion);
 	overflow: hidden;
 }
 
