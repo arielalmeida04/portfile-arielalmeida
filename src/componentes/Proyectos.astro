@@ -1,0 +1,35 @@
+---
+import '../estilos/proyectos.css';
+import TarjetaProyecto from './TarjetaProyecto.astro';
+import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+
+interface Props {
+	/** Idioma de los textos de la sección. */
+	idioma?: Idioma;
+}
+
+const { idioma = idiomaPorDefecto } = Astro.props;
+const textos = obtenerTextos(idioma);
+const { titulo, placeholders, etiquetaTecnologias, abreNuevaPestana } = textos.proyectos;
+---
+
+<section id="proyectos" class="seccion proyectos" aria-labelledby="titulo-proyectos">
+	<div class="contenedor">
+		<h2 id="titulo-proyectos" class="titulo-seccion revelar">{titulo}</h2>
+
+		<ul class="proyectos__lista">
+			{
+				placeholders.map((proyecto, indice) => (
+					<li class="proyectos__item">
+						<TarjetaProyecto
+							proyecto={proyecto}
+							indice={indice + 1}
+							etiquetaTecnologias={etiquetaTecnologias}
+							abreNuevaPestana={abreNuevaPestana}
+						/>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

@@ -1,0 +1,208 @@
+---
+import '../estilos/contacto.css';
+import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+import { redes } from '../datos/redes';
+
+interface Props {
+	/** Idioma de los textos de la sección. */
+	idioma?: Idioma;
+}
+
+const { idioma = idiomaPorDefecto } = Astro.props;
+const textos = obtenerTextos(idioma);
+const { titulo, descripcion, redes: etiquetasRedes, formulario } = textos.contacto;
+
+/** Access key pública de Web3Forms (variable de entorno del build). */
+const claveWeb3Forms = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+
+/** Campo del formulario y sus atributos ya traducidos. */
+interface CampoFormulario {
+	nombre: string;
+	atributoNombre: string;
+	tipo: 'text' | 'tel' | 'email' | 'url';
+	autocomplete: string;
+	ancho: boolean;
+	ayuda: string | undefined;
+	error: string;
+}
+
+const campos: CampoFormulario[] = [
+	{
+		nombre: 'nombre',
+		atributoNombre: 'nombre',
+		tipo: 'text',
+		autocomplete: 'given-name',
+		ancho: false,
+		ayuda: undefined,
+		error: formulario.campos.nombre.error,
+	},
+	{
+		nombre: 'apellido',
+		atributoNombre: 'apellido',
+		tipo: 'text',
+		autocomplete: 'family-name',
+		ancho: false,
+		ayuda: undefined,
+		error: formulario.campos.apellido.error,
+	},
+	{
+		nombre: 'telefono',
+		atributoNombre: 'telefono',
+		tipo: 'tel',
+		autocomplete: 'tel',
+		ancho: false,
+		ayuda: undefined,
+		error: formulario.campos.telefono.error,
+	},
+	{
+		nombre: 'correo',
+		atributoNombre: 'email',
+		tipo: 'email',
+		autocomplete: 'email',
+		ancho: false,
+		ayuda: undefined,
+		error: formulario.campos.correo.error,
+	},
+	{
+		nombre: 'redSocial',
+		atributoNombre: 'red_social',
+		tipo: 'url',
+		autocomplete: 'url',
+		ancho: true,
+		ayuda: formulario.campos.redSocial.ayuda,
+		error: formulario.campos.redSocial.error,
+	},
+];
+
+const etiquetas: Record<string, string> = {
+	nombre: formulario.campos.nombre.etiqueta,
+	apellido: formulario.campos.apellido.etiqueta,
+	telefono: formulario.campos.telefono.etiqueta,
+	correo: formulario.campos.correo.etiqueta,
+	redSocial: formulario.campos.redSocial.etiqueta,
+	mensaje: formulario.campos.mensaje.etiqueta,
+};
+---
+
+<section id="contacto" class="seccion contacto" aria-labelledby="titulo-contacto">
+	<div class="contenedor">
+		<h2 id="titulo-contacto" class="titulo-seccion revelar">{titulo}</h2>
+
+		<div class="contacto__contenido">
+			<div class="contacto__redes revelar" style="--retardo-revelado: 0.1s;">
+				<p class="contacto__descripcion">{descripcion}</p>
+
+				<ul class="contacto__lista-redes" role="list">
+					{
+						redes.map((red, indice) => (
+							<li>
+								<a
+									class="contacto__red"
+									href={red.url}
+									target={red.url.startsWith('http') ? '_blank' : undefined}
+									rel={red.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+								>
+									<span class="contacto__red-indice" aria-hidden="true">
+										{String(indice + 1).padStart(2, '0')}
+									</span>
+									<span>{etiquetasRedes[red.id]}</span>
+									<span class="contacto__red-flecha" aria-hidden="true">-&gt;</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<form
+				class="contacto__formulario revelar"
+				style="--retardo-revelado: 0.2s;"
+				action="https://api.web3forms.com/submit"
+				method="POST"
+				novalidate
+				data-formulario-contacto
+				data-enviando={formulario.enviando}
+				data-exito={formulario.exito}
+				data-error-envio={formulario.error}
+			>
+				<!-- Web3Forms -->
+				<input type="hidden" name="access_key" value={claveWeb3Forms} />
+				<input type="hidden" name="subject" value={formulario.asunto} />
+				<input type="hidden" name="from_name" value={textos.meta.autor} />
+
+				<!-- Anti-spam: honeypot oculto que los bots suelen rellenar -->
+				<input
+					type="checkbox"
+					name="botcheck"
+					class="solo-lectura"
+					tabindex="-1"
+					autocomplete="off"
+					aria-hidden="true"
+				/>
+
+				<h3 class="formulario__titulo">{formulario.titulo}</h3>
+
+				<div class="contacto__campos">
+					{
+						campos.map((campo) => (
+							<div class={campo.ancho ? 'campo campo--ancho' : 'campo'}>
+								<label class="campo__etiqueta" for={`campo-${campo.nombre}`}>
+									{etiquetas[campo.nombre]}
+									<span class="campo__obligatorio" aria-hidden="true">
+										*
+									</span>
+								</label>
+								<input
+									class="campo__control"
+									id={`campo-${campo.nombre}`}
+									name={campo.atributoNombre}
+									type={campo.tipo}
+									autocomplete={campo.autocomplete}
+									required
+									data-campo
+									data-mensaje-error={campo.error}
+									aria-describedby={`error-${campo.nombre}`}
+								/>
+								{campo.ayuda && <span class="campo__ayuda">{campo.ayuda}</span>}
+								<span class="campo__error" id={`error-${campo.nombre}`} data-error hidden />
+							</div>
+						))
+					}
+
+					<div class="campo campo--ancho">
+						<label class="campo__etiqueta" for="campo-mensaje">
+							{etiquetas.mensaje}
+							<span class="campo__obligatorio" aria-hidden="true">*</span>
+						</label>
+						<textarea
+							class="campo__control"
+							id="campo-mensaje"
+							name="mensaje"
+							required
+							data-campo
+							data-mensaje-error={formulario.campos.mensaje.error}
+							aria-describedby="ayuda-mensaje error-mensaje"></textarea>
+						<span class="campo__ayuda" id="ayuda-mensaje">{formulario.campos.mensaje.ayuda}</span>
+						<span class="campo__error" id="error-mensaje" data-error hidden />
+					</div>
+				</div>
+
+				<button
+					class="boton contacto__enviar"
+					type="submit"
+					data-texto-original={formulario.enviar}
+				>
+					{formulario.enviar}
+				</button>
+
+				<div class="contacto__estado" role="status" aria-live="polite" data-estado></div>
+			</form>
+		</div>
+	</div>
+</section>
+
+<script>
+	import { iniciarFormularioContacto } from '../scripts/formulario-contacto';
+
+	iniciarFormularioContacto();
+</script>

@@ -1,0 +1,99 @@
+---
+import '../estilos/globales.css';
+import BarraNavegacion from '../componentes/BarraNavegacion.astro';
+import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+
+interface Props {
+	/** Idioma del contenido renderizado. */
+	idioma?: Idioma;
+	/** Título del documento (si no se pasa, se usa el del diccionario). */
+	titulo?: string;
+	/** Meta descripción de la página. */
+	descripcion?: string;
+}
+
+const { idioma = idiomaPorDefecto, titulo, descripcion } = Astro.props;
+const textos = obtenerTextos(idioma);
+const tituloFinal = titulo ?? textos.meta.titulo;
+const descripcionFinal = descripcion ?? textos.meta.descripcion;
+---
+
+<!doctype html>
+<html lang={idioma}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={descripcionFinal} />
+		<meta name="author" content={textos.meta.autor} />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="theme-color" content="#ffffff" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={tituloFinal} />
+		<meta property="og:description" content={descripcionFinal} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+		/>
+
+		<title>{tituloFinal}</title>
+
+		<!--
+			Fija el tema antes de pintar para evitar el parpadeo al cargar.
+			Prioriza la elección guardada del usuario; si no hay, usa la
+			preferencia del sistema. Sin JS queda el tema claro por defecto.
+		-->
+		<script is:inline>
+			(function () {
+				try {
+					var guardado = localStorage.getItem('tema');
+					var prefiereOscuro =
+						window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+					var tema = guardado === 'oscuro' || guardado === 'claro' ? guardado : prefiereOscuro ? 'oscuro' : 'claro';
+					document.documentElement.dataset.tema = tema;
+					var meta = document.querySelector('meta[name="theme-color"]');
+					if (meta) meta.setAttribute('content', tema === 'oscuro' ? '#0b0e14' : '#ffffff');
+				} catch (error) {
+					/* Sin acceso a localStorage seguimos con el tema claro. */
+				}
+			})();
+		</script>
+
+		<!--
+			Marca el documento como "con JS" antes de pintar. Solo entonces las
+			secciones se ocultan para animarse al hacer scroll: si el JS no corre
+			(o el usuario prefiere menos movimiento), el contenido queda visible.
+		-->
+		<script is:inline>
+			var prefiereMenosMovimiento =
+				typeof window.matchMedia === 'function' &&
+				window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			if ('IntersectionObserver' in window && !prefiereMenosMovimiento) {
+				document.documentElement.classList.add('con-js');
+			}
+		</script>
+	</head>
+	<body>
+		<a class="enlace-salto" href="#contenido-principal">{textos.navegacion.alternativa}</a>
+
+		<BarraNavegacion idioma={idioma} />
+
+		<main id="contenido-principal">
+			<slot />
+		</main>
+
+		<script>
+			import { iniciarRevelado } from '../scripts/revelar';
+
+			iniciarRevelado();
+		</script>
+	</body>
+</html>

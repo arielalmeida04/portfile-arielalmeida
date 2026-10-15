@@ -1,0 +1,176 @@
+---
+import '../estilos/barra-navegacion.css';
+import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+
+interface Props {
+	/** Idioma de los textos de la barra. */
+	idioma?: Idioma;
+}
+
+const { idioma = idiomaPorDefecto } = Astro.props;
+const textos = obtenerTextos(idioma);
+
+/** Anclas de la landing, en el mismo orden que las secciones. */
+const enlaces: ReadonlyArray<{ id: string; etiqueta: string }> = [
+	{ id: 'inicio', etiqueta: textos.navegacion.inicio },
+	{ id: 'sobre-mi', etiqueta: textos.navegacion.sobreMi },
+	{ id: 'proyectos', etiqueta: textos.navegacion.proyectos },
+	{ id: 'contacto', etiqueta: textos.navegacion.contacto },
+];
+---
+
+<header class="navbar">
+	<div class="contenedor navbar__contenido">
+		<a class="navbar__marca" href="#inicio">
+			{textos.navegacion.marca}
+		</a>
+
+		<button
+			class="navbar__boton"
+			type="button"
+			aria-expanded="false"
+			aria-controls="menu-principal"
+			aria-label={textos.navegacion.menu}
+			data-boton-menu
+			data-etiqueta-abrir={textos.navegacion.menu}
+			data-etiqueta-cerrar={textos.navegacion.cerrarMenu}
+		>
+			<span class="navbar__boton-linea"></span>
+			<span class="navbar__boton-linea"></span>
+			<span class="navbar__boton-linea"></span>
+		</button>
+
+		<nav
+			id="menu-principal"
+			class="navbar__menu"
+			aria-label={textos.navegacion.principal}
+			data-menu
+		>
+			<ul class="navbar__lista" role="list">
+				{
+					enlaces.map((enlace) => (
+						<li>
+							<a class="navbar__enlace" href={`#${enlace.id}`}>
+								{enlace.etiqueta}
+							</a>
+						</li>
+					))
+				}
+				<li>
+					<button
+						class="selector-tema"
+						type="button"
+						aria-label={textos.navegacion.cambiarTema}
+						aria-pressed="false"
+						data-selector-tema
+					>
+						<svg
+							class="selector-tema__icono"
+							data-sol
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							focusable="false"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="4"></circle>
+							<path
+								d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+							></path>
+						</svg>
+						<svg
+							class="selector-tema__icono"
+							data-luna
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							focusable="false"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5Z"></path>
+						</svg>
+					</button>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<script>
+	// Menú mobile: solo se activa por debajo del breakpoint de escritorio.
+	const boton = document.querySelector<HTMLButtonElement>('[data-boton-menu]');
+	const menu = document.querySelector<HTMLElement>('[data-menu]');
+	const enlaces = document.querySelectorAll<HTMLAnchorElement>('.navbar__enlace');
+	const consultaEscritorio =
+		typeof window.matchMedia === 'function' ? window.matchMedia('(min-width: 48rem)') : null;
+
+	function menuEstaAbierto(): boolean {
+		return menu?.classList.contains('es-abierto') ?? false;
+	}
+
+	function abrirMenu(): void {
+		if (!menu || !boton) return;
+		menu.classList.add('es-abierto');
+		boton.setAttribute('aria-expanded', 'true');
+		boton.setAttribute('aria-label', boton.dataset.etiquetaCerrar ?? '');
+	}
+
+	function cerrarMenu(): void {
+		if (!menu || !boton) return;
+		menu.classList.remove('es-abierto');
+		boton.setAttribute('aria-expanded', 'false');
+		boton.setAttribute('aria-label', boton.dataset.etiquetaAbrir ?? '');
+	}
+
+	boton?.addEventListener('click', () => {
+		menuEstaAbierto() ? cerrarMenu() : abrirMenu();
+	});
+
+	// Al navegar a una sección, el menú mobile se cierra.
+	enlaces.forEach((enlace) => enlace.addEventListener('click', cerrarMenu));
+
+	// Escape cierra el menú.
+	document.addEventListener('keydown', (evento) => {
+		if (evento.key === 'Escape' && menuEstaAbierto()) {
+			cerrarMenu();
+			boton?.focus();
+		}
+	});
+
+	// Al pasar a escritorio el menú queda siempre visible.
+	consultaEscritorio?.addEventListener('change', (evento) => {
+		if (evento.matches) cerrarMenu();
+	});
+
+	// --- Selector de tema claro / oscuro ---
+	const botonTema = document.querySelector('[data-selector-tema]');
+
+	function temaActual(): 'claro' | 'oscuro' {
+		return document.documentElement.dataset.tema === 'oscuro' ? 'oscuro' : 'claro';
+	}
+
+	function aplicarTema(tema: 'claro' | 'oscuro'): void {
+		document.documentElement.dataset.tema = tema;
+		try {
+			localStorage.setItem('tema', tema);
+		} catch {
+			/* Si no se puede guardar, el cambio igual se aplica en esta visita. */
+		}
+		botonTema?.setAttribute('aria-pressed', String(tema === 'oscuro'));
+		const meta = document.querySelector('meta[name="theme-color"]');
+		if (meta) meta.setAttribute('content', tema === 'oscuro' ? '#0b0e14' : '#ffffff');
+	}
+
+	// Sincroniza el estado del botón con el tema que fijó el script del <head>.
+	botonTema?.setAttribute('aria-pressed', String(temaActual() === 'oscuro'));
+
+	botonTema?.addEventListener('click', () => {
+		aplicarTema(temaActual() === 'oscuro' ? 'claro' : 'oscuro');
+	});
+</script>

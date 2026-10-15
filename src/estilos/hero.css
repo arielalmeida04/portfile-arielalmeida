@@ -1,0 +1,281 @@
+/* ==========================================================================
+   Hero: texto de presentación + tarjeta flotante de terminal, estilo Apple.
+   ========================================================================== */
+
+.hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	min-height: 100svh;
+	padding-top: calc(var(--navbar-alto) + var(--espacio-lg));
+	padding-bottom: var(--espacio-xl);
+	overflow: hidden;
+}
+
+.hero__contenido {
+	display: grid;
+	gap: var(--espacio-lg);
+	align-items: center;
+}
+
+.hero__texto {
+	position: relative;
+	z-index: var(--z-contenido);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--espacio-md);
+	max-width: var(--ancho-texto);
+}
+
+/* --- Insignia de estado (acento ámbar) ----------------------------------- */
+.hero__insignia {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--espacio-xs);
+	padding: 0.35rem 0.9rem;
+	font-size: var(--texto-xs);
+	font-weight: 500;
+	color: var(--color-magenta);
+	background: rgba(245, 158, 11, 0.14);
+	border: 1px solid rgba(245, 158, 11, 0.38);
+	border-radius: var(--radio-pill);
+	backdrop-filter: blur(var(--blur-vidrio));
+	-webkit-backdrop-filter: blur(var(--blur-vidrio));
+	animation: aparecer-hero 0.6s var(--curva) 0.15s both;
+}
+
+.hero__insignia::before {
+	content: '';
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--color-amarillo);
+}
+
+/* --- Nombre, rol y descripción ------------------------------------------- */
+.hero__nombre {
+	font-size: var(--texto-hero);
+	font-weight: 600;
+	letter-spacing: -0.035em;
+	color: var(--color-texto);
+	animation: aparecer-hero 0.7s var(--curva) var(--retardo-entrada, 1.6s) both;
+}
+
+.hero__rol {
+	font-family: var(--fuente-titulos);
+	font-size: var(--texto-lg);
+	font-weight: 500;
+	color: var(--color-texto-suave);
+	animation: aparecer-hero 0.7s var(--curva) var(--retardo-rol, 1.8s) both;
+}
+
+.hero__subtitulo {
+	max-width: 46ch;
+	color: var(--color-texto-suave);
+	animation: aparecer-hero 0.7s var(--curva) var(--retardo-subtitulo, 2s) both;
+}
+
+.hero__acciones {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--espacio-sm);
+	margin-top: var(--espacio-xs);
+	animation: aparecer-hero 0.7s var(--curva) var(--retardo-acciones, 2.2s) both;
+}
+
+@keyframes aparecer-hero {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* --- Tarjeta flotante de terminal ---------------------------------------- */
+.hero__tarjeta {
+	position: relative;
+	width: 100%;
+	animation: flotar-tarjeta 0.9s var(--curva) 0.25s both;
+}
+
+/* Aurora de color detrás del vidrio */
+.hero__tarjeta::before {
+	content: '';
+	position: absolute;
+	inset: -18% -12%;
+	z-index: -1;
+	border-radius: 50%;
+	background:
+		radial-gradient(closest-side, rgba(0, 113, 227, 0.28), transparent 70%),
+		radial-gradient(closest-side at 82% 78%, rgba(245, 158, 11, 0.24), transparent 70%),
+		radial-gradient(closest-side at 20% 85%, rgba(236, 72, 153, 0.18), transparent 70%);
+	filter: blur(40px);
+	pointer-events: none;
+}
+
+@keyframes flotar-tarjeta {
+	from {
+		opacity: 0;
+		transform: translateY(24px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.terminal {
+	position: relative;
+	border: 1px solid var(--borde-vidrio-fuerte);
+	border-radius: var(--radio-lg);
+	background: var(--superficie-vidrio-fuerte);
+	backdrop-filter: blur(24px) saturate(180%);
+	-webkit-backdrop-filter: blur(24px) saturate(180%);
+	box-shadow:
+		0 30px 70px rgba(0, 0, 0, 0.16),
+		0 14px 34px rgba(0, 113, 227, 0.2),
+		0 4px 12px rgba(0, 0, 0, 0.08),
+		inset 0 1px 0 rgba(255, 255, 255, 0.5);
+	overflow: hidden;
+	font-family: var(--fuente-mono);
+	font-size: var(--texto-sm);
+	transition: transform var(--velocidad) var(--curva), box-shadow var(--velocidad) var(--curva),
+		background-color var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva);
+}
+
+.terminal:hover {
+	transform: translateY(-4px);
+	box-shadow:
+		0 40px 90px rgba(0, 0, 0, 0.2),
+		0 18px 44px rgba(0, 113, 227, 0.28),
+		0 4px 12px rgba(0, 0, 0, 0.08),
+		inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.terminal__barra {
+	display: flex;
+	align-items: center;
+	gap: var(--espacio-xs);
+	padding: 0.7rem 1rem;
+	border-bottom: 1px solid var(--borde-vidrio);
+	background: var(--superficie-vidrio-suave);
+}
+
+/* Semáforo de ventana de macOS */
+.terminal__punto {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+.terminal__punto:nth-child(1) {
+	background: #ff5f57;
+}
+
+.terminal__punto:nth-child(2) {
+	background: #febc2e;
+}
+
+.terminal__punto:nth-child(3) {
+	background: #28c840;
+}
+
+.terminal__titulo {
+	margin-left: var(--espacio-xs);
+	color: var(--color-texto-tenue);
+	font-size: var(--texto-xs);
+}
+
+.terminal__cuerpo {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	padding: var(--espacio-md) 1.15rem 1.4rem;
+}
+
+.terminal__linea {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5ch;
+	color: var(--color-texto);
+	line-height: 1.5;
+}
+
+.terminal__prompt {
+	color: var(--color-cian);
+}
+
+/* Escritura automática: ancho animado en pasos (monospace = 1ch por carácter).
+   La longitud y el retardo se calculan en el componente y llegan por variables. */
+.terminal__tecleo {
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	border-right: 2px solid var(--color-cian);
+	width: var(--longitud, 0ch);
+	animation:
+		teclear-longitud 0.07s steps(var(--caracteres, 1)) var(--retardo, 0s) both,
+		parpadear-cursor 1s step-end calc(var(--retardo, 0s) + 0.1s) infinite;
+}
+
+/* Salidas que sólo se desvanecen (no se teclean). */
+.terminal__nota {
+	color: var(--color-texto-tenue);
+	font-size: var(--texto-xs);
+	line-height: 1.5;
+	animation: aparecer-terminal 0.35s var(--curva) var(--retardo, 0s) both;
+}
+
+.terminal__salida {
+	animation: aparecer-terminal 0.4s var(--curva) var(--retardo, 0s) both;
+}
+
+.terminal__salida--nombre {
+	color: var(--color-texto);
+	font-weight: 700;
+	font-size: var(--texto-base);
+}
+
+.terminal__salida--rol {
+	color: var(--color-cian);
+	font-weight: 600;
+}
+
+@keyframes teclear-longitud {
+	from {
+		width: 0;
+	}
+	to {
+		width: var(--longitud, 0ch);
+	}
+}
+
+@keyframes aparecer-terminal {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes parpadear-cursor {
+	50% {
+		border-color: transparent;
+	}
+}
+
+/* --- Desktop -------------------------------------------------------------- */
+@media (min-width: 60rem) {
+	.hero__contenido {
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+		gap: var(--espacio-xl);
+	}
+}

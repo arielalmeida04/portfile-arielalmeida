@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Tarjeta de proyecto: panel de vidrio claro con borde sutil y elevación
+   al pasar el mouse. Chips de tecnologías en ámbar.
+   ========================================================================== */
+
+.tarjeta {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: var(--espacio-sm);
+	padding: var(--espacio-md);
+	background: var(--superficie-vidrio);
+	backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
+	-webkit-backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-lg);
+	box-shadow: var(--sombra-panel);
+	overflow: hidden;
+	transition: transform var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva),
+		box-shadow var(--velocidad) var(--curva);
+}
+
+/* Luz ambiental interna en la parte superior */
+.tarjeta::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: radial-gradient(120% 70% at 50% -10%, rgba(0, 113, 227, 0.12), transparent 62%);
+	opacity: 0.8;
+	transition: opacity var(--velocidad) var(--curva);
+}
+
+/* Línea superior fina azul -> ámbar */
+.tarjeta::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(0, 113, 227, 0.5), rgba(245, 158, 11, 0.4), transparent);
+	opacity: 0.6;
+	transition: opacity var(--velocidad) var(--curva);
+}
+
+.tarjeta:hover,
+.tarjeta:focus-within {
+	transform: translateY(-5px);
+	border-color: var(--borde-vidrio-fuerte);
+	box-shadow: var(--sombra-panel-alta);
+}
+
+.tarjeta:hover::before,
+.tarjeta:focus-within::before {
+	opacity: 1;
+}
+
+.tarjeta:hover::after,
+.tarjeta:focus-within::after {
+	opacity: 1;
+}
+
+.tarjeta__indice {
+	position: relative;
+	font-family: var(--fuente-mono);
+	font-size: var(--texto-xs);
+	font-weight: 600;
+	letter-spacing: 0.2em;
+	color: var(--color-cian);
+}
+
+.tarjeta__titulo {
+	position: relative;
+	font-size: var(--texto-lg);
+	font-weight: 600;
+	color: var(--color-texto);
+}
+
+.tarjeta__descripcion {
+	position: relative;
+	flex-grow: 1;
+	color: var(--color-texto-suave);
+	font-size: var(--texto-sm);
+}
+
+.tarjeta__tecnologias {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--espacio-xs);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tarjeta__tecnologia {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.3rem 0.75rem 0.3rem 0.6rem;
+	font-size: var(--texto-xs);
+	font-weight: 500;
+	color: var(--color-texto);
+	background: var(--superficie-vidrio-fuerte);
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-pill);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.icono-tecnologia {
+	flex-shrink: 0;
+	color: var(--color-marca);
+}
+
+/* Marcas casi negras (Vercel, Next.js, Angular...) se aclaran en tema oscuro. */
+[data-tema='oscuro'] .icono-tecnologia[data-oscuro] {
+	color: var(--color-texto);
+}
+
+.tarjeta__enlace {
+	position: relative;
+	align-self: flex-start;
+	margin-top: var(--espacio-xs);
+	font-size: var(--texto-sm);
+	font-weight: 500;
+	color: var(--color-cian);
+	transition: color var(--velocidad) var(--curva);
+}
+
+.tarjeta__enlace::after {
+	content: ' →';
+	display: inline-block;
+	transition: transform var(--velocidad) var(--curva);
+}
+
+.tarjeta__enlace:hover {
+	color: var(--color-cian-fuerte);
+}
+
+.tarjeta__enlace:hover::after {
+	transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tarjeta:hover,
+	.tarjeta:focus-within {
+		transform: none;
+	}
+}

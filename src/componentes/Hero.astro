@@ -1,0 +1,135 @@
+---
+import '../estilos/hero.css';
+import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+
+interface Props {
+	/** Idioma de los textos del hero. */
+	idioma?: Idioma;
+}
+
+const { idioma = idiomaPorDefecto } = Astro.props;
+const textos = obtenerTextos(idioma);
+
+const { insignia, nombre, rol, subtitulo, terminal, acciones } = textos.hero;
+
+/** Ritmo de la animación (segundos por carácter y pausas entre pasos). */
+const VELOCIDAD_TECLEO = 0.045;
+const PAUSA_COMANDO = 0.18;
+const PASO_SALIDA = 0.16;
+
+const comando1 = terminal.comandos[0] ?? '';
+const comando2 = terminal.comandos[1] ?? '';
+
+/** Reloj compartido para escalonar toda la secuencia de la terminal. */
+let tiempo = 0.5;
+
+const retardoComando1 = tiempo;
+tiempo += comando1.length * VELOCIDAD_TECLEO + PAUSA_COMANDO;
+
+/** Salidas de `apt update`, una detrás de otra. */
+const salidasActualizar = terminal.actualizar.map((texto) => {
+	const retardo = tiempo;
+	tiempo += PASO_SALIDA;
+	return { texto, retardo };
+});
+tiempo += 0.15;
+
+const retardoComando2 = tiempo;
+tiempo += comando2.length * VELOCIDAD_TECLEO + PAUSA_COMANDO;
+
+/** Salidas de `apt install` (incluye el nombre del paquete). */
+const salidasInstalar = terminal.instalar.map((texto) => {
+	const retardo = tiempo;
+	tiempo += PASO_SALIDA;
+	return { texto, retardo };
+});
+tiempo += 0.1;
+
+const retardoNombre = tiempo;
+tiempo += 0.3;
+const retardoRol = tiempo;
+
+/** El texto de entrada del hero aparece cuando termina la terminal. */
+const retardoBase = Math.min(tiempo, 2.6);
+
+/** Cuenta de caracteres y ancho final (`ch`) para la animación de tecleo. */
+function estiloTecleo(texto: string, retardo: number): string {
+	return `--caracteres: ${texto.length}; --longitud: ${texto.length}ch; --retardo: ${retardo.toFixed(2)}s;`;
+}
+
+/** Retardo para las líneas de salida que sólo se desvanecen. */
+function estiloSalida(retardo: number): string {
+	return `--retardo: ${retardo.toFixed(2)}s;`;
+}
+---
+
+<section id="inicio" class="hero">
+	<div class="contenedor hero__contenido">
+		<div class="hero__texto">
+			<span class="hero__insignia">{insignia}</span>
+
+			<h1
+				class="hero__nombre"
+				style={`--retardo-entrada: ${retardoBase.toFixed(2)}s; --retardo-rol: ${(retardoBase + 0.12).toFixed(2)}s; --retardo-subtitulo: ${(retardoBase + 0.24).toFixed(2)}s; --retardo-acciones: ${(retardoBase + 0.36).toFixed(2)}s;`}
+			>
+				{nombre}
+			</h1>
+
+			<p class="hero__rol">{rol}</p>
+			<p class="hero__subtitulo">{subtitulo}</p>
+
+			<div class="hero__acciones">
+				<a class="boton" href="#proyectos">{acciones.proyectos}</a>
+				<a class="boton boton--fantasma" href="#contacto">{acciones.contacto}</a>
+			</div>
+		</div>
+
+		<div class="hero__tarjeta">
+			<div class="terminal" role="img" aria-label={terminal.etiqueta}>
+				<div class="terminal__barra">
+					<span class="terminal__punto"></span>
+					<span class="terminal__punto"></span>
+					<span class="terminal__punto"></span>
+					<span class="terminal__titulo">{terminal.titulo}</span>
+				</div>
+
+				<div class="terminal__cuerpo">
+					<p class="terminal__linea">
+						<span class="terminal__prompt">{terminal.prompt}</span>
+						<span class="terminal__tecleo" style={estiloTecleo(comando1, retardoComando1)}>
+							{comando1}
+						</span>
+					</p>
+					{
+						salidasActualizar.map((salida) => (
+							<p class="terminal__nota" style={estiloSalida(salida.retardo)}>
+								{salida.texto}
+							</p>
+						))
+					}
+
+					<p class="terminal__linea">
+						<span class="terminal__prompt">{terminal.prompt}</span>
+						<span class="terminal__tecleo" style={estiloTecleo(comando2, retardoComando2)}>
+							{comando2}
+						</span>
+					</p>
+					{
+						salidasInstalar.map((salida) => (
+							<p class="terminal__nota" style={estiloSalida(salida.retardo)}>
+								{salida.texto}
+							</p>
+						))
+					}
+
+					<p class="terminal__salida terminal__salida--nombre" style={estiloSalida(retardoNombre)}>
+						{nombre}
+					</p>
+					<p class="terminal__salida terminal__salida--rol" style={estiloSalida(retardoRol)}>
+						{rol}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

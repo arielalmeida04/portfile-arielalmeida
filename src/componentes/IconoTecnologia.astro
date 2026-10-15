@@ -1,0 +1,32 @@
+---
+import { buscarIcono, esColorOscuro } from '../datos/tecnologias';
+
+interface Props {
+	/** Nombre de la tecnología tal como aparece en los textos. */
+	tecnologia: string;
+}
+
+const { tecnologia } = Astro.props;
+const icono = buscarIcono(tecnologia);
+/** Las marcas casi negras se aclaran en el tema oscuro para seguir viéndose. */
+const oscuro = esColorOscuro(icono.color);
+---
+
+<svg
+	class="icono-tecnologia"
+	viewBox="0 0 24 24"
+	width="16"
+	height="16"
+	role="img"
+	aria-hidden="true"
+	focusable="false"
+	data-oscuro={oscuro ? '' : undefined}
+	style={`--color-marca: ${icono.color}`}
+	fill={icono.trazo ? 'none' : 'currentColor'}
+	stroke={icono.trazo ? 'currentColor' : undefined}
+	stroke-width={icono.trazo ? 2 : undefined}
+	stroke-linecap={icono.trazo ? 'round' : undefined}
+	stroke-linejoin={icono.trazo ? 'round' : undefined}
+>
+	<path d={icono.dibujo} fill-rule="evenodd"></path>
+</svg>

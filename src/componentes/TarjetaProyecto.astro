@@ -1,0 +1,52 @@
+---
+import '../estilos/tarjeta-proyecto.css';
+import IconoTecnologia from './IconoTecnologia.astro';
+import type { Textos } from '../i18n';
+
+export type Proyecto = Textos['proyectos']['placeholders'][number];
+
+interface Props {
+	/** Proyecto a mostrar (textos ya resueltos en el idioma activo). */
+	proyecto: Proyecto;
+	/** Posición en la lista, usada para el número decorativo. */
+	indice: number;
+	/** Etiqueta accesible del listado de tecnologías. */
+	etiquetaTecnologias: string;
+	/** Texto accesible para enlaces que abren en otra pestaña. */
+	abreNuevaPestana: string;
+}
+
+const { proyecto, indice, etiquetaTecnologias, abreNuevaPestana } = Astro.props;
+
+const numero = String(indice).padStart(2, '0');
+const esEnlaceExterno = /^https?:\/\//.test(proyecto.enlace);
+---
+
+<article class="tarjeta revelar" style={`--retardo-revelado: ${(indice * 0.08).toFixed(2)}s;`}>
+	<span class="tarjeta__indice" aria-hidden="true">{numero}</span>
+
+	<h3 class="tarjeta__titulo">{proyecto.titulo}</h3>
+	<p class="tarjeta__descripcion">{proyecto.descripcion}</p>
+
+	<span class="solo-lectura">{etiquetaTecnologias}</span>
+	<ul class="tarjeta__tecnologias" role="list">
+		{
+			proyecto.tecnologias.map((tecnologia) => (
+				<li class="tarjeta__tecnologia">
+					<IconoTecnologia tecnologia={tecnologia} />
+					<span>{tecnologia}</span>
+				</li>
+			))
+		}
+	</ul>
+
+	<a
+		class="tarjeta__enlace"
+		href={proyecto.enlace}
+		target={esEnlaceExterno ? '_blank' : undefined}
+		rel={esEnlaceExterno ? 'noopener noreferrer' : undefined}
+	>
+		{proyecto.etiquetaEnlace}
+		{esEnlaceExterno && <span class="solo-lectura"> ({abreNuevaPestana})</span>}
+	</a>
+</article>

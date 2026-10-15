@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Estilos globales: reset, base, fondo blanco mezclado con color (aurora),
+   vidrio claro, botones estilo Apple y aparición al hacer scroll.
+   ========================================================================== */
+
+@import './variables.css';
+
+/* --- Reset / base ------------------------------------------------------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--navbar-alto) + 1.5rem);
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	position: relative;
+	min-height: 100vh;
+	background-color: var(--color-fondo);
+	color: var(--color-texto-suave);
+	font-family: var(--fuente-sans);
+	font-size: var(--texto-base);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	transition: background-color var(--velocidad) var(--curva), color var(--velocidad) var(--curva);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--fuente-titulos);
+	color: var(--color-texto);
+	line-height: 1.1;
+	font-weight: 600;
+	letter-spacing: -0.022em;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+	overflow-wrap: break-word;
+}
+
+a {
+	color: var(--color-cian);
+	text-decoration: none;
+	transition: color var(--velocidad) var(--curva);
+}
+
+a:hover {
+	color: var(--color-cian-fuerte);
+}
+
+ul[role='list'],
+ol[role='list'] {
+	list-style: none;
+	padding: 0;
+}
+
+:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.35);
+	border-radius: 6px;
+}
+
+/* --- Fondo: blanco mezclado con color (aurora intensa) --------------------
+   Base blanca sobre la que se mezclan halos azul, ámbar, rosa, turquesa y
+   violeta, dando un fondo claro con bastante color tipo Apple. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: var(--z-fondo);
+	pointer-events: none;
+	background:
+		radial-gradient(60rem 46rem at 10% 2%, rgba(0, 113, 227, 0.42), transparent 60%),
+		radial-gradient(52rem 42rem at 95% 6%, rgba(245, 158, 11, 0.4), transparent 60%),
+		radial-gradient(56rem 48rem at 82% 100%, rgba(236, 72, 153, 0.36), transparent 60%),
+		radial-gradient(50rem 44rem at 4% 96%, rgba(45, 212, 191, 0.38), transparent 60%),
+		radial-gradient(48rem 40rem at 50% 50%, rgba(139, 92, 246, 0.22), transparent 62%),
+		var(--color-fondo);
+}
+
+/* Aurora del tema oscuro: los mismos halos, más vivos sobre el fondo grafito. */
+[data-tema='oscuro'] body::before {
+	background:
+		radial-gradient(60rem 46rem at 10% 2%, rgba(10, 132, 255, 0.4), transparent 60%),
+		radial-gradient(52rem 42rem at 95% 6%, rgba(245, 158, 11, 0.32), transparent 60%),
+		radial-gradient(56rem 48rem at 82% 100%, rgba(236, 72, 153, 0.3), transparent 60%),
+		radial-gradient(50rem 44rem at 4% 96%, rgba(45, 212, 191, 0.3), transparent 60%),
+		radial-gradient(48rem 40rem at 50% 50%, rgba(139, 92, 246, 0.24), transparent 62%),
+		var(--color-fondo);
+}
+
+/* --- Utilidades de layout ------------------------------------------------ */
+.contenedor {
+	width: min(100% - 2.5rem, var(--ancho-max));
+	margin-inline: auto;
+}
+
+.seccion {
+	position: relative;
+	z-index: var(--z-contenido);
+	padding-block: var(--espacio-xl);
+	scroll-margin-top: calc(var(--navbar-alto) + 1.5rem);
+}
+
+/* --- Panel de vidrio reutilizable ---------------------------------------- */
+.panel-vidrio {
+	background: var(--superficie-vidrio);
+	backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
+	-webkit-backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-lg);
+	box-shadow: var(--sombra-panel);
+}
+
+/* --- Títulos de sección -------------------------------------------------- */
+.titulo-seccion {
+	display: grid;
+	justify-items: start;
+	gap: var(--espacio-xs);
+	margin-bottom: var(--espacio-lg);
+	font-family: var(--fuente-titulos);
+	font-size: var(--texto-xl);
+	font-weight: 600;
+	color: var(--color-texto);
+	letter-spacing: -0.025em;
+}
+
+/* Pequeña barra que marca el inicio de cada sección: azul -> ámbar */
+.titulo-seccion::before {
+	content: '';
+	width: 2.5rem;
+	height: 4px;
+	border-radius: var(--radio-pill);
+	background: linear-gradient(90deg, var(--color-cian-fuerte), var(--color-amarillo));
+}
+
+/* --- Botones estilo Apple ------------------------------------------------- */
+.boton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--espacio-xs);
+	padding: 0.8rem 1.6rem;
+	font-family: var(--fuente-sans);
+	font-size: var(--texto-sm);
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	color: #ffffff;
+	background: var(--color-cian-fuerte);
+	border: 1px solid transparent;
+	border-radius: var(--radio-pill);
+	cursor: pointer;
+	transition: background-color var(--velocidad) var(--curva), box-shadow var(--velocidad) var(--curva),
+		transform var(--velocidad) var(--curva), color var(--velocidad) var(--curva),
+		border-color var(--velocidad) var(--curva);
+}
+
+.boton:hover {
+	color: #ffffff;
+	background: var(--color-cian);
+	box-shadow: var(--glow-cian);
+	transform: translateY(-1px);
+}
+
+.boton--fantasma {
+	color: var(--color-texto);
+	background: var(--superficie-vidrio-fuerte);
+	backdrop-filter: blur(var(--blur-vidrio));
+	-webkit-backdrop-filter: blur(var(--blur-vidrio));
+	border-color: var(--borde-vidrio-fuerte);
+}
+
+.boton--fantasma:hover {
+	color: var(--color-texto);
+	background: var(--color-fondo-2);
+	border-color: var(--borde-vidrio-fuerte);
+	box-shadow: var(--sombra-panel);
+}
+
+/* --- Accesibilidad ------------------------------------------------------- */
+.solo-lectura {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.enlace-salto {
+	position: absolute;
+	top: -100%;
+	left: var(--espacio-sm);
+	z-index: calc(var(--z-navbar) + 1);
+	padding: var(--espacio-xs) var(--espacio-sm);
+	background: var(--superficie-vidrio-fuerte);
+	backdrop-filter: blur(var(--blur-vidrio));
+	border: 1px solid var(--borde-vidrio-fuerte);
+	border-radius: var(--radio-sm);
+	box-shadow: var(--sombra-panel);
+	font-size: var(--texto-sm);
+	color: var(--color-texto);
+	transition: top var(--velocidad) var(--curva);
+}
+
+.enlace-salto:focus {
+	top: var(--espacio-sm);
+}
+
+/* --- Animación de aparición al hacer scroll (IntersectionObserver) --------
+   Solo se oculta si el JavaScript pudo activarse (`html.con-js`). Sin JS el
+   contenido queda visible: nunca dependemos del script para mostrar la info. */
+.con-js .revelar {
+	opacity: 0;
+	transform: translateY(24px);
+	transition:
+		opacity 0.6s var(--curva) var(--retardo-revelado, 0s),
+		transform 0.6s var(--curva) var(--retardo-revelado, 0s);
+	will-change: opacity, transform;
+}
+
+.revelar.es-visible {
+	opacity: 1;
+	transform: none;
+}
+
+/* --- Accesibilidad: respetar preferencia de movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-delay: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		transition-delay: 0.01ms !important;
+	}
+
+	.revelar {
+		opacity: 1;
+		transform: none;
+	}
+}

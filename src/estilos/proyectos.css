@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Sección Proyectos: grilla responsive de tarjetas de vidrio.
+   ========================================================================== */
+
+.proyectos__lista {
+	display: grid;
+	gap: var(--espacio-md);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.proyectos__item {
+	display: flex;
+}
+
+.proyectos__item > * {
+	width: 100%;
+}
+
+@media (min-width: 48rem) {
+	.proyectos__lista {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 64rem) {
+	.proyectos__lista {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}

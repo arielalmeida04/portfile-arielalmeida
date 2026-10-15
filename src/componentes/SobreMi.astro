@@ -1,0 +1,53 @@
+---
+import '../estilos/sobre-mi.css';
+import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+
+interface Props {
+	/** Idioma de los textos de la sección. */
+	idioma?: Idioma;
+}
+
+const { idioma = idiomaPorDefecto } = Astro.props;
+const textos = obtenerTextos(idioma);
+const { titulo, estado, pieFoto, altFoto, parrafos, datos } = textos.sobreMi;
+---
+
+<section id="sobre-mi" class="seccion sobre-mi" aria-labelledby="titulo-sobre-mi">
+	<div class="contenedor">
+		<h2 id="titulo-sobre-mi" class="titulo-seccion revelar">{titulo}</h2>
+
+		<div class="sobre-mi__contenido">
+			<figure class="sobre-mi__marco revelar" style="--retardo-revelado: 0.1s;">
+				<div class="sobre-mi__marco-imagen">
+					<img
+						class="sobre-mi__foto"
+						src="/img/foto-perfil.jpg"
+						alt={altFoto}
+						width="900"
+						height="1100"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<figcaption class="sobre-mi__pie">{pieFoto}</figcaption>
+			</figure>
+
+			<div class="sobre-mi__texto revelar" style="--retardo-revelado: 0.2s;">
+				<span class="sobre-mi__estado">{estado}</span>
+
+				{parrafos.map((parrafo) => <p class="sobre-mi__parrafo">{parrafo}</p>)}
+
+				<dl class="sobre-mi__datos">
+					{
+						datos.map((dato) => (
+							<div class="sobre-mi__dato">
+								<dt class="sobre-mi__dato-etiqueta">{dato.etiqueta}</dt>
+								<dd class="sobre-mi__dato-valor">{dato.valor}</dd>
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</div>
+	</div>
+</section>

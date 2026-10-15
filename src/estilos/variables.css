@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Tokens de diseño: tema claro estilo Apple.
+   Fondo blanco con mezclas de color suaves (aurora), paneles de vidrio
+   claros, tipografía del sistema (SF Pro en Mac/iOS) y azul Apple como CTA.
+   ========================================================================== */
+
+:root {
+	/* --- Color scheme: obliga a los controles nativos a verse claros --- */
+	color-scheme: light;
+
+	/* --- Fondo y superficies translúcidas (vidrio claro) --- */
+	--color-fondo: #ffffff;
+	--color-fondo-2: #f5f5f7; /* gris Apple para bloques secundarios */
+	--color-fondo-3: #ececee;
+
+	--superficie-vidrio: rgba(255, 255, 255, 0.72);
+	--superficie-vidrio-fuerte: rgba(255, 255, 255, 0.85);
+	--superficie-vidrio-suave: rgba(0, 0, 0, 0.03);
+
+	/* Superficie de la barra de navegación y su menú desplegable */
+	--superficie-navbar: rgba(255, 255, 255, 0.72);
+	--superficie-navbar-fuerte: rgba(255, 255, 255, 0.88);
+
+	--borde-vidrio: rgba(0, 0, 0, 0.08);
+	--borde-vidrio-fuerte: rgba(0, 0, 0, 0.14);
+
+	--blur-vidrio: 20px;
+	--saturacion-vidrio: 180%;
+
+	/* --- Acentos ---
+	   Se mantienen los nombres históricos (cian/magenta/amarillo) para no
+	   romper los componentes: ahora son azul Apple y ámbar. */
+	--color-cian: #0066cc; /* azul Apple: enlaces, foco y acentos */
+	--color-cian-fuerte: #0071e3; /* azul Apple de botones */
+	--color-magenta: #b45309; /* ámbar oscuro: badges y etiquetas legibles */
+	--color-amarillo: #f59e0b; /* ámbar base: bordes y fondos suaves */
+	--color-exito: #0b6b3a; /* verde legible para mensajes de éxito */
+
+	--color-acento: var(--color-cian);
+	--color-ambar: var(--color-amarillo);
+
+	/* --- Texto (grises de Apple) --- */
+	--color-texto: #1d1d1f; /* títulos y texto principal */
+	--color-texto-suave: #6e6e73; /* texto secundario */
+	--color-texto-tenue: #86868b; /* metadatos */
+
+	/* --- Bordes --- */
+	--color-borde: var(--borde-vidrio);
+	--color-borde-fuerte: var(--borde-vidrio-fuerte);
+
+	/* --- Sombras (luz suave, sin glow neón) --- */
+	--glow-cian: 0 6px 24px rgba(0, 102, 204, 0.22);
+
+	--sombra-panel: 0 8px 30px rgba(0, 0, 0, 0.08);
+	--sombra-panel-alta: 0 20px 55px rgba(0, 0, 0, 0.13);
+
+	/* --- Tipografía: pila del sistema (SF Pro en Mac/iOS, Inter como fallback) --- */
+	--fuente-titulos: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Plus Jakarta Sans',
+		'Helvetica Neue', Arial, sans-serif;
+	--fuente-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif;
+	--fuente-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, 'JetBrains Mono', Consolas, monospace;
+
+	--texto-xs: clamp(0.75rem, 0.72rem + 0.2vw, 0.8125rem);
+	--texto-sm: clamp(0.875rem, 0.84rem + 0.25vw, 0.9375rem);
+	--texto-base: clamp(1rem, 0.96rem + 0.35vw, 1.0625rem);
+	--texto-lg: clamp(1.25rem, 1.15rem + 0.6vw, 1.5rem);
+	--texto-xl: clamp(1.75rem, 1.5rem + 1.6vw, 2.5rem);
+	--texto-hero: clamp(2.5rem, 1.9rem + 3vw, 4.25rem);
+
+	/* --- Espaciado y layout --- */
+	--espacio-xs: 0.5rem;
+	--espacio-sm: 1rem;
+	--espacio-md: 1.5rem;
+	--espacio-lg: 3rem;
+	--espacio-xl: 5rem;
+
+	--ancho-max: 1160px;
+	--ancho-texto: 62ch;
+	--navbar-alto: 64px;
+
+	/* --- Radios suaves y modernos --- */
+	--radio: 18px;
+	--radio-sm: 12px;
+	--radio-lg: 22px;
+	--radio-pill: 999px;
+
+	/* --- Transiciones --- */
+	--velocidad: 260ms;
+	--curva: cubic-bezier(0.22, 1, 0.36, 1);
+
+	/* --- Capas --- */
+	--z-fondo: -1;
+	--z-contenido: 1;
+	--z-navbar: 100;
+}
+
+/* ==========================================================================
+   Tema oscuro: la contraparte del tema claro.
+   Se activa con [data-tema='oscuro'] en <html>; lo fija un script en el
+   <head> antes de pintar para evitar el parpadeo al cargar.
+   ========================================================================== */
+[data-tema='oscuro'] {
+	color-scheme: dark;
+
+	/* --- Fondo y superficies (vidrio oscuro) --- */
+	--color-fondo: #0b0e14;
+	--color-fondo-2: #121722;
+	--color-fondo-3: #1b2130;
+
+	--superficie-vidrio: rgba(22, 28, 40, 0.66);
+	--superficie-vidrio-fuerte: rgba(24, 30, 44, 0.82);
+	--superficie-vidrio-suave: rgba(255, 255, 255, 0.05);
+
+	--superficie-navbar: rgba(11, 14, 20, 0.7);
+	--superficie-navbar-fuerte: rgba(12, 16, 24, 0.9);
+
+	--borde-vidrio: rgba(255, 255, 255, 0.1);
+	--borde-vidrio-fuerte: rgba(255, 255, 255, 0.18);
+
+	/* --- Acentos (azul y ámbar de Apple para fondo oscuro) --- */
+	--color-cian: #4da3ff;
+	--color-cian-fuerte: #0a84ff;
+	--color-magenta: #f5a524;
+	--color-amarillo: #f59e0b;
+	--color-exito: #30d158;
+
+	/* --- Texto (grises de Apple en modo oscuro) --- */
+	--color-texto: #f5f5f7;
+	--color-texto-suave: #a1a1a6;
+	--color-texto-tenue: #8e8e93;
+
+	/* --- Sombras y halos --- */
+	--glow-cian: 0 6px 24px rgba(10, 132, 255, 0.4);
+
+	--sombra-panel: 0 8px 30px rgba(0, 0, 0, 0.5);
+	--sombra-panel-alta: 0 20px 55px rgba(0, 0, 0, 0.65);
+}

@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Barra de navegación fija: vidrio claro estilo Apple, enlaces sutiles.
+   ========================================================================== */
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: var(--z-navbar);
+	height: var(--navbar-alto);
+	background: var(--superficie-navbar);
+	backdrop-filter: blur(20px) saturate(180%);
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	border-bottom: 1px solid var(--borde-vidrio);
+	transition: background-color var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva);
+}
+
+.navbar__contenido {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--espacio-sm);
+	height: 100%;
+}
+
+/* --- Marca --------------------------------------------------------------- */
+.navbar__marca {
+	font-family: var(--fuente-titulos);
+	font-size: var(--texto-base);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	color: var(--color-texto);
+	white-space: nowrap;
+	transition: opacity var(--velocidad) var(--curva);
+}
+
+.navbar__marca:hover {
+	color: var(--color-texto);
+	opacity: 0.7;
+}
+
+/* --- Botón de menú (mobile) ---------------------------------------------- */
+.navbar__boton {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	width: 44px;
+	height: 44px;
+	padding: 11px;
+	background: var(--superficie-vidrio-suave);
+	backdrop-filter: blur(var(--blur-vidrio));
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-sm);
+	cursor: pointer;
+	transition: border-color var(--velocidad) var(--curva), background-color var(--velocidad) var(--curva);
+}
+
+.navbar__boton:hover,
+.navbar__boton[aria-expanded='true'] {
+	background: var(--color-fondo-2);
+	border-color: var(--borde-vidrio-fuerte);
+}
+
+.navbar__boton-linea {
+	display: block;
+	width: 100%;
+	height: 2px;
+	border-radius: 2px;
+	background: var(--color-texto);
+	transition: transform var(--velocidad) var(--curva), opacity var(--velocidad) var(--curva);
+}
+
+.navbar__boton[aria-expanded='true'] .navbar__boton-linea:nth-child(1) {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__boton[aria-expanded='true'] .navbar__boton-linea:nth-child(2) {
+	opacity: 0;
+}
+
+.navbar__boton[aria-expanded='true'] .navbar__boton-linea:nth-child(3) {
+	transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Menú (mobile: panel de vidrio desplegable) -------------------------- */
+.navbar__menu {
+	position: fixed;
+	top: var(--navbar-alto);
+	left: 0;
+	right: 0;
+	padding: var(--espacio-sm) 0 var(--espacio-md);
+	background: var(--superficie-navbar-fuerte);
+	backdrop-filter: blur(24px) saturate(180%);
+	-webkit-backdrop-filter: blur(24px) saturate(180%);
+	border-bottom: 1px solid var(--borde-vidrio);
+	box-shadow: var(--sombra-panel);
+	visibility: hidden;
+	opacity: 0;
+	transform: translateY(-12px);
+	transition:
+		opacity var(--velocidad) var(--curva),
+		transform var(--velocidad) var(--curva),
+		visibility var(--velocidad) var(--curva);
+}
+
+.navbar__menu.es-abierto {
+	visibility: visible;
+	opacity: 1;
+	transform: none;
+}
+
+.navbar__lista {
+	display: flex;
+	flex-direction: column;
+	gap: var(--espacio-xs);
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.navbar__enlace {
+	position: relative;
+	display: block;
+	padding: var(--espacio-xs) var(--espacio-sm);
+	font-size: var(--texto-sm);
+	font-weight: 400;
+	color: var(--color-texto-suave);
+	border-radius: var(--radio-sm);
+	transition: color var(--velocidad) var(--curva), background-color var(--velocidad) var(--curva);
+}
+
+.navbar__enlace:hover,
+.navbar__enlace:focus-visible {
+	color: var(--color-texto);
+	background: var(--superficie-vidrio-suave);
+}
+
+/* --- Selector de tema (claro / oscuro) ----------------------------------- */
+.selector-tema {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	color: var(--color-texto);
+	background: var(--superficie-vidrio-suave);
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-pill);
+	cursor: pointer;
+	transition: background-color var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva),
+		color var(--velocidad) var(--curva), transform var(--velocidad) var(--curva);
+}
+
+.selector-tema:hover {
+	background: var(--color-fondo-2);
+	border-color: var(--borde-vidrio-fuerte);
+	transform: scale(1.05);
+}
+
+.selector-tema__icono {
+	width: 18px;
+	height: 18px;
+	display: none;
+}
+
+/* En tema claro se ofrece el sol (para ir a oscuro); en oscuro, la luna. */
+:root:not([data-tema='oscuro']) .selector-tema__icono[data-sol] {
+	display: block;
+}
+
+[data-tema='oscuro'] .selector-tema__icono[data-luna] {
+	display: block;
+}
+
+/* El botón dentro de la lista de navegación hereda el espaciado del menú. */
+.navbar__lista .selector-tema {
+	margin-left: 0.25rem;
+}
+
+/* --- Desktop -------------------------------------------------------------- */
+@media (min-width: 48rem) {
+	.navbar__boton {
+		display: none;
+	}
+
+	.navbar__menu {
+		position: static;
+		padding: 0;
+		background: transparent;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+		border-bottom: 0;
+		box-shadow: none;
+		visibility: visible;
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.navbar__lista {
+		flex-direction: row;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.navbar__enlace {
+		padding: 0.4rem 0.85rem;
+	}
+
+	/* Subrayado sutil para el estado hover/focus */
+	.navbar__enlace::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		right: 50%;
+		bottom: 0.1rem;
+		height: 2px;
+		border-radius: 2px;
+		background: linear-gradient(90deg, var(--color-cian-fuerte), var(--color-amarillo));
+		transition: left var(--velocidad) var(--curva), right var(--velocidad) var(--curva);
+	}
+
+	.navbar__enlace:hover::after,
+	.navbar__enlace:focus-visible::after {
+		left: 0.85rem;
+		right: 0.85rem;
+	}
+}

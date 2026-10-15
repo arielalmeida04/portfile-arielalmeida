@@ -1,0 +1,160 @@
+/* ==========================================================================
+   Sobre mí: tarjeta de vidrio clara con la foto, badge ámbar y datos.
+   ========================================================================== */
+
+.sobre-mi {
+	position: relative;
+}
+
+.sobre-mi__contenido {
+	display: grid;
+	gap: var(--espacio-lg);
+	align-items: start;
+}
+
+/* --- Foto dentro de un panel de vidrio ----------------------------------- */
+.sobre-mi__marco {
+	position: relative;
+	max-width: 20rem;
+	margin-inline: auto;
+	padding: var(--espacio-sm);
+	background: var(--superficie-vidrio);
+	backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
+	-webkit-backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-lg);
+	box-shadow: var(--sombra-panel);
+}
+
+/* Aurora suave detrás de la foto */
+.sobre-mi__marco::after {
+	content: '';
+	position: absolute;
+	inset: -14%;
+	z-index: -1;
+	border-radius: 50%;
+	background:
+		radial-gradient(closest-side, rgba(0, 113, 227, 0.24), transparent 70%),
+		radial-gradient(closest-side at 80% 85%, rgba(236, 72, 153, 0.18), transparent 70%);
+	filter: blur(38px);
+	pointer-events: none;
+}
+
+.sobre-mi__marco-imagen {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--radio-sm);
+}
+
+.sobre-mi__foto {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 9 / 11;
+	object-fit: cover;
+}
+
+.sobre-mi__pie {
+	margin-top: var(--espacio-sm);
+	font-size: var(--texto-xs);
+	color: var(--color-texto-tenue);
+	letter-spacing: 0.06em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+/* --- Badge de estado (ámbar) --------------------------------------------- */
+.sobre-mi__estado {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--espacio-xs);
+	padding: 0.35rem 0.9rem;
+	font-size: var(--texto-xs);
+	font-weight: 500;
+	color: var(--color-magenta);
+	background: rgba(245, 158, 11, 0.14);
+	border: 1px solid rgba(245, 158, 11, 0.38);
+	border-radius: var(--radio-pill);
+	backdrop-filter: blur(var(--blur-vidrio));
+	-webkit-backdrop-filter: blur(var(--blur-vidrio));
+}
+
+.sobre-mi__estado::before {
+	content: '';
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--color-amarillo);
+	animation: latido-estado 2s ease-in-out infinite;
+}
+
+@keyframes latido-estado {
+	50% {
+		opacity: 0.35;
+		transform: scale(0.85);
+	}
+}
+
+/* --- Texto y datos -------------------------------------------------------- */
+.sobre-mi__texto {
+	display: flex;
+	flex-direction: column;
+	gap: var(--espacio-sm);
+}
+
+.sobre-mi__parrafo {
+	max-width: var(--ancho-texto);
+	color: var(--color-texto-suave);
+}
+
+.sobre-mi__datos {
+	display: grid;
+	gap: var(--espacio-sm);
+	margin-top: var(--espacio-md);
+	padding: 0;
+}
+
+.sobre-mi__dato {
+	display: grid;
+	gap: 0.1rem;
+	padding: var(--espacio-sm);
+	background: var(--superficie-vidrio-fuerte);
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-sm);
+	box-shadow: var(--sombra-panel);
+}
+
+.sobre-mi__dato-etiqueta {
+	font-size: var(--texto-xs);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--color-texto-tenue);
+	font-weight: 500;
+}
+
+.sobre-mi__dato-valor {
+	color: var(--color-texto);
+	font-weight: 500;
+}
+
+/* --- Desktop -------------------------------------------------------------- */
+@media (min-width: 60rem) {
+	.sobre-mi__contenido {
+		grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+		gap: var(--espacio-xl);
+	}
+
+	.sobre-mi__marco {
+		margin-inline: 0;
+		max-width: none;
+	}
+
+	.sobre-mi__datos {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sobre-mi__estado::before {
+		animation: none;
+	}
+}
