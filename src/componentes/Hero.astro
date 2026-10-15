@@ -10,7 +10,7 @@ interface Props {
 const { idioma = idiomaPorDefecto } = Astro.props;
 const textos = obtenerTextos(idioma);
 
-const { insignia, nombre, rol, subtitulo, terminal, acciones } = textos.hero;
+const { nombre, rol, subtitulo, terminal, acciones } = textos.hero;
 
 /** Ritmo de la animación (segundos por carácter y pausas entre pasos). */
 const VELOCIDAD_TECLEO = 0.045;
@@ -66,8 +66,6 @@ function estiloSalida(retardo: number): string {
 <section id="inicio" class="hero">
 	<div class="contenedor hero__contenido">
 		<div class="hero__texto">
-			<span class="hero__insignia">{insignia}</span>
-
 			<h1
 				class="hero__nombre"
 				style={`--retardo-entrada: ${retardoBase.toFixed(2)}s; --retardo-rol: ${(retardoBase + 0.12).toFixed(2)}s; --retardo-subtitulo: ${(retardoBase + 0.24).toFixed(2)}s; --retardo-acciones: ${(retardoBase + 0.36).toFixed(2)}s;`}

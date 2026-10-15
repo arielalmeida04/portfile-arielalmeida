@@ -5,7 +5,7 @@
  */
 export const es = {
 	meta: {
-		titulo: 'Ariel Almeida | Desarrollador Full Stack',
+		titulo: 'Ariel Almeida | Desarrollador Java Backend',
 		descripcion:
 			'Desarrollador front-end especializado en Astro y back-end con Java. Landing personal, proyectos y contacto.',
 		autor: 'Ariel Almeida',
@@ -41,10 +41,9 @@ export const es = {
 			],
 			etiqueta: 'Terminal Debian simulada con mi presentación',
 		},
-		insignia: 'Disponible para nuevos proyectos',
 		nombre: 'Ariel Almeida',
-		rol: 'Desarrollador Full Stack',
-		subtitulo: 'Construyo experiencias web rápidas, accesibles y con personalidad.',
+		rol: 'Desarrollador Java Backend',
+		subtitulo: 'Construyo experiencias web rápidas, accesibles, eficientes y escalables.',
 		acciones: {
 			proyectos: 'Ver proyectos',
 			contacto: 'Contactarme',
