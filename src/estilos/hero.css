@@ -30,11 +30,24 @@
 
 /* --- Nombre, rol y descripción ------------------------------------------- */
 .hero__nombre {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
 	font-size: var(--texto-hero);
 	font-weight: 600;
 	letter-spacing: -0.035em;
 	color: var(--color-texto);
 	animation: aparecer-hero 0.7s var(--curva) var(--retardo-entrada, 1.6s) both;
+}
+
+.hero__nombre-icono {
+	flex-shrink: 0;
+	width: 0.85em;
+	height: 0.85em;
+}
+
+.hero__nombre-texto {
+	min-width: 0;
 }
 
 .hero__rol {

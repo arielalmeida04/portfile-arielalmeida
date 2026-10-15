@@ -12,7 +12,7 @@ export const es = {
 	},
 
 	navegacion: {
-		marca: 'Ariel Almeida',
+		marca: 'ariel@debian:~',
 		inicio: 'Inicio',
 		sobreMi: 'Sobre mí',
 		proyectos: 'Proyectos',

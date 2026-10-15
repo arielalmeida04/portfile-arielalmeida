@@ -1,0 +1,35 @@
+---
+/**
+ * Tux (pinguino de Linux) a partir del arte monocromo de freesvg.org.
+ * En tema claro se usa el arte original (cuerpo negro, panza blanca) y en tema
+ * oscuro se invierte a blanco solido para que siga siendo visible.
+ */
+interface Props {
+	/** Clase opcional para dimensionar/ubicar el icono. */
+	class?: string;
+}
+
+const { class: clase } = Astro.props;
+---
+
+<img
+	src="/img/tux.png"
+	alt=""
+	aria-hidden="true"
+	draggable="false"
+	class:list={['icono-tux', clase]}
+/>
+
+<style>
+	.icono-tux {
+		display: inline-block;
+		flex-shrink: 0;
+		object-fit: contain;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+
+	:global([data-tema='oscuro']) .icono-tux {
+		filter: brightness(0) invert(1);
+	}
+</style>

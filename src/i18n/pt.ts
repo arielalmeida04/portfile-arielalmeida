@@ -10,7 +10,7 @@ export const pt: Textos = {
 	},
 
 	navegacion: {
-		marca: 'Ariel Almeida',
+		marca: 'ariel@debian:~',
 		inicio: 'Início',
 		sobreMi: 'Sobre mim',
 		proyectos: 'Projetos',

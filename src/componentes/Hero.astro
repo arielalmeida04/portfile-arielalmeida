@@ -1,6 +1,7 @@
 ---
 import '../estilos/hero.css';
 import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+import IconoTux from './IconoTux.astro';
 
 interface Props {
 	/** Idioma de los textos del hero. */
@@ -70,7 +71,8 @@ function estiloSalida(retardo: number): string {
 				class="hero__nombre"
 				style={`--retardo-entrada: ${retardoBase.toFixed(2)}s; --retardo-rol: ${(retardoBase + 0.12).toFixed(2)}s; --retardo-subtitulo: ${(retardoBase + 0.24).toFixed(2)}s; --retardo-acciones: ${(retardoBase + 0.36).toFixed(2)}s;`}
 			>
-				{nombre}
+				<IconoTux class="hero__nombre-icono" />
+				<span class="hero__nombre-texto">{nombre}</span>
 			</h1>
 
 			<p class="hero__rol">{rol}</p>

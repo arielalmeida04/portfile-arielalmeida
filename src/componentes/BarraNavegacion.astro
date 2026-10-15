@@ -1,6 +1,7 @@
 ---
 import '../estilos/barra-navegacion.css';
 import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+import IconoTux from './IconoTux.astro';
 
 interface Props {
 	/** Idioma de los textos de la barra. */
@@ -21,8 +22,10 @@ const enlaces: ReadonlyArray<{ id: string; etiqueta: string }> = [
 
 <header class="navbar">
 	<div class="contenedor navbar__contenido">
-		<a class="navbar__marca" href="#inicio">
-			{textos.navegacion.marca}
+		<a class="navbar__marca" href="#inicio" aria-label={textos.meta.autor}>
+			<IconoTux class="navbar__marca-icono" />
+			<span class="navbar__marca-texto">{textos.navegacion.marca}</span>
+			<span class="navbar__marca-cursor" aria-hidden="true"></span>
 		</a>
 
 		<button
