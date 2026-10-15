@@ -41,7 +41,7 @@ export const pt: Textos = {
 		},
 		nombre: 'Ariel Almeida',
 		rol: 'Desenvolvedor Java Backend',
-		subtitulo: 'Crio experiências web rápidas, acessíveis e com eficiência e escalabilidade.',
+		subtitulo: 'Crio experiências web rápidas, acessíveis, eficientes e escaláveis.',
 		acciones: {
 			proyectos: 'Ver projetos',
 			contacto: 'Entrar em contato',
