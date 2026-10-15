@@ -12,7 +12,7 @@ export const es = {
 	},
 
 	navegacion: {
-		marca: 'ariel@debian:~',
+		marca: 'ariel@almeida:~',
 		inicio: 'Inicio',
 		sobreMi: 'Sobre mí',
 		proyectos: 'Proyectos',
@@ -26,8 +26,8 @@ export const es = {
 
 	hero: {
 		terminal: {
-			titulo: 'ariel@debian: ~',
-			prompt: 'ariel@debian:~$',
+			titulo: 'ariel@almeida: ~',
+			prompt: 'ariel@almeida:~$',
 			comandos: ['sudo apt update', 'sudo apt install ariel-almeida'],
 			actualizar: [
 				'Leyendo listas de paquetes... Hecho',

@@ -194,7 +194,7 @@
 }
 
 .terminal__prompt {
-	color: var(--color-cian);
+	color: var(--color-debian);
 }
 
 /* Escritura automática: ancho animado en pasos (monospace = 1ch por carácter).

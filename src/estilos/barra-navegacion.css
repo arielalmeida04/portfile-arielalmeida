@@ -49,14 +49,14 @@
 }
 
 .navbar__marca-texto {
-	color: var(--color-cian);
+	color: var(--color-debian);
 }
 
 .navbar__marca-cursor {
 	width: 0.5rem;
 	height: 1.1em;
 	margin-left: -0.15rem;
-	background: var(--color-cian);
+	background: var(--color-debian);
 	animation: parpadeo-cursor 1.1s steps(2, start) infinite;
 }
 
