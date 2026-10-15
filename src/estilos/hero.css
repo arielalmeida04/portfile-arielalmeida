@@ -28,31 +28,6 @@
 	max-width: var(--ancho-texto);
 }
 
-/* --- Insignia de estado (acento ámbar) ----------------------------------- */
-.hero__insignia {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--espacio-xs);
-	padding: 0.35rem 0.9rem;
-	font-size: var(--texto-xs);
-	font-weight: 500;
-	color: var(--color-magenta);
-	background: rgba(245, 158, 11, 0.14);
-	border: 1px solid rgba(245, 158, 11, 0.38);
-	border-radius: var(--radio-pill);
-	backdrop-filter: blur(var(--blur-vidrio));
-	-webkit-backdrop-filter: blur(var(--blur-vidrio));
-	animation: aparecer-hero 0.6s var(--curva) 0.15s both;
-}
-
-.hero__insignia::before {
-	content: '';
-	width: 7px;
-	height: 7px;
-	border-radius: 50%;
-	background: var(--color-amarillo);
-}
-
 /* --- Nombre, rol y descripción ------------------------------------------- */
 .hero__nombre {
 	font-size: var(--texto-hero);

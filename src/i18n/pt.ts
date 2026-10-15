@@ -3,7 +3,7 @@ import type { Textos } from './tipos';
 /** Textos en portugués (pendiente de revisión final). */
 export const pt: Textos = {
 	meta: {
-		titulo: 'Ariel Almeida | Desenvolvedor Full Stack',
+		titulo: 'Ariel Almeida | Desenvolvedor Java Backend',
 		descripcion:
 			'Desenvolvedor front-end especializado em Astro e back-end com Java. Landing pessoal, projetos e contato.',
 		autor: 'Ariel Almeida',
@@ -39,10 +39,9 @@ export const pt: Textos = {
 			],
 			etiqueta: 'Terminal Debian simulada com a minha apresentação',
 		},
-		insignia: 'Disponível para novos projetos',
 		nombre: 'Ariel Almeida',
-		rol: 'Desenvolvedor Full Stack',
-		subtitulo: 'Crio experiências web rápidas, acessíveis e com personalidade.',
+		rol: 'Desenvolvedor Java Backend',
+		subtitulo: 'Crio experiências web rápidas, acessíveis e com eficiência e escalabilidade.',
 		acciones: {
 			proyectos: 'Ver projetos',
 			contacto: 'Entrar em contato',
