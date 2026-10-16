@@ -19,6 +19,7 @@ export const pt: Textos = {
 		principal: 'Navegação principal',
 		menu: 'Abrir menu',
 		cambiarTema: 'Alternar entre tema claro e escuro',
+		cambiarIdioma: 'Alterar idioma',
 		cerrarMenu: 'Fechar menu',
 	},
 
@@ -32,11 +33,7 @@ export const pt: Textos = {
 				'Construindo árvore de dependências... Feito',
 				'Todos os pacotes estão atualizados.',
 			],
-			instalar: [
-				'Lendo listas de pacotes... Feito',
-				'Os seguintes pacotes NOVOS serão instalados:',
-				'  ariel-almeida',
-			],
+			instalar: ['  ariel-almeida  suporte 24/7  fiabilidade  adaptabilidade'],
 			etiqueta: 'Terminal Debian simulada com a minha apresentação',
 		},
 		nombre: 'Ariel Almeida',

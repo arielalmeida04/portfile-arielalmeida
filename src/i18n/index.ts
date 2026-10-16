@@ -19,4 +19,11 @@ export function obtenerTextos(idioma: Idioma = idiomaPorDefecto): Textos {
 	return diccionarios[idioma] ?? diccionarios[idiomaPorDefecto];
 }
 
+/** Ruta correspondiente al idioma para el cambio entre /, /en/, /pt/. */
+export function rutaIdioma(idioma: Idioma): string {
+	if (idioma === 'en') return '/en/';
+	if (idioma === 'pt') return '/pt/';
+	return '/';
+}
+
 export type { Idioma, Textos };

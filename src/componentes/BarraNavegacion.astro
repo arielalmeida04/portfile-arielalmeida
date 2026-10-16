@@ -1,6 +1,6 @@
 ---
 import '../estilos/barra-navegacion.css';
-import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
+import { obtenerTextos, idiomaPorDefecto, type Idioma, rutaIdioma } from '../i18n';
 import IconoTux from './IconoTux.astro';
 
 interface Props {
@@ -10,6 +10,8 @@ interface Props {
 
 const { idioma = idiomaPorDefecto } = Astro.props;
 const textos = obtenerTextos(idioma);
+const siguienteIdioma: Idioma = idioma === 'es' ? 'en' : idioma === 'en' ? 'pt' : 'es';
+const rutaSiguienteIdioma = rutaIdioma(siguienteIdioma);
 
 /** Anclas de la landing, en el mismo orden que las secciones. */
 const enlaces: ReadonlyArray<{ id: string; etiqueta: string }> = [
@@ -99,6 +101,31 @@ const enlaces: ReadonlyArray<{ id: string; etiqueta: string }> = [
 							<path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5Z"></path>
 						</svg>
 					</button>
+				</li>
+				<li>
+					<a
+						class="selector-idioma"
+						href={rutaSiguienteIdioma}
+						aria-label={textos.navegacion.cambiarIdioma}
+						data-selector-idioma
+					>
+						<svg
+							class="selector-idioma__icono"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							focusable="false"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="3"></circle>
+							<path
+								d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m6.36 6.36 4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m6.36-6.36 4.24-4.24"
+							></path>
+						</svg>
+					</a>
 				</li>
 			</ul>
 		</nav>

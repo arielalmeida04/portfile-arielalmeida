@@ -206,8 +206,38 @@
 	display: block;
 }
 
+/* Selector de idioma (minimalista, estilo vidrio). */
+.selector-idioma {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	color: var(--color-texto);
+	background: var(--superficie-vidrio-suave);
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-pill);
+	cursor: pointer;
+	transition: background-color var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva),
+		color var(--velocidad) var(--curva), transform var(--velocidad) var(--curva);
+}
+
+.selector-idioma:hover {
+	background: var(--color-fondo-2);
+	border-color: var(--borde-vidrio-fuerte);
+	transform: scale(1.05);
+}
+
+.selector-idioma__icono {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+
 /* El botón dentro de la lista de navegación hereda el espaciado del menú. */
-.navbar__lista .selector-tema {
+.navbar__lista .selector-tema,
+.navbar__lista .selector-idioma {
 	margin-left: 0.25rem;
 }
 

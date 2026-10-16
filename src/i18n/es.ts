@@ -21,6 +21,7 @@ export const es = {
 		principal: 'Navegación principal',
 		menu: 'Abrir menú',
 		cambiarTema: 'Cambiar entre tema claro y oscuro',
+		cambiarIdioma: 'Cambiar idioma',
 		cerrarMenu: 'Cerrar menú',
 	},
 
@@ -34,11 +35,7 @@ export const es = {
 				'Construyendo árbol de dependencias... Hecho',
 				'Todos los paquetes están actualizados.',
 			],
-			instalar: [
-				'Leyendo listas de paquetes... Hecho',
-				'Se instalarán los siguientes paquetes NUEVOS:',
-				'  ariel-almeida',
-			],
+			instalar: ['  ariel-almeida  soporte 24/7  fiabilidad  adaptabilidad'],
 			etiqueta: 'Terminal Debian simulada con mi presentación',
 		},
 		nombre: 'Ariel Almeida',

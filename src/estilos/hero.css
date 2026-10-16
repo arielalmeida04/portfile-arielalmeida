@@ -197,50 +197,17 @@
 	color: var(--color-debian);
 }
 
-/* Escritura automática: ancho animado en pasos (monospace = 1ch por carácter).
-   La longitud y el retardo se calculan en el componente y llegan por variables. */
-.terminal__tecleo {
-	display: inline-block;
-	max-width: 100%;
-	overflow: hidden;
-	white-space: nowrap;
-	border-right: 2px solid var(--color-cian);
-	width: var(--longitud, 0ch);
-	animation:
-		teclear-longitud 0.07s steps(var(--caracteres, 1)) var(--retardo, 0s) both,
-		parpadear-cursor 1s step-end calc(var(--retardo, 0s) + 0.1s) infinite;
+/* Comando escrito por el usuario (texto estático, sin animación de tecleo). */
+.terminal__comando {
+	overflow-wrap: anywhere;
 }
 
-/* Salidas que sólo se desvanecen (no se teclean). */
+/* Salidas que sólo se desvanecen. */
 .terminal__nota {
 	color: var(--color-texto-tenue);
 	font-size: var(--texto-xs);
 	line-height: 1.5;
 	animation: aparecer-terminal 0.35s var(--curva) var(--retardo, 0s) both;
-}
-
-.terminal__salida {
-	animation: aparecer-terminal 0.4s var(--curva) var(--retardo, 0s) both;
-}
-
-.terminal__salida--nombre {
-	color: var(--color-texto);
-	font-weight: 700;
-	font-size: var(--texto-base);
-}
-
-.terminal__salida--rol {
-	color: var(--color-cian);
-	font-weight: 600;
-}
-
-@keyframes teclear-longitud {
-	from {
-		width: 0;
-	}
-	to {
-		width: var(--longitud, 0ch);
-	}
 }
 
 @keyframes aparecer-terminal {
@@ -251,12 +218,6 @@
 	to {
 		opacity: 1;
 		transform: none;
-	}
-}
-
-@keyframes parpadear-cursor {
-	50% {
-		border-color: transparent;
 	}
 }
 

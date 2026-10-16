@@ -19,6 +19,7 @@ export const en: Textos = {
 		principal: 'Main navigation',
 		menu: 'Open menu',
 		cambiarTema: 'Switch between light and dark theme',
+		cambiarIdioma: 'Change language',
 		cerrarMenu: 'Close menu',
 	},
 
@@ -32,11 +33,7 @@ export const en: Textos = {
 				'Building dependency tree... Done',
 				'All packages are up to date.',
 			],
-			instalar: [
-				'Reading package lists... Done',
-				'The following NEW packages will be installed:',
-				'  ariel-almeida',
-			],
+			instalar: ['  ariel-almeida  24/7 support  reliability  adaptability'],
 			etiqueta: 'Simulated Debian terminal with my introduction',
 		},
 		nombre: 'Ariel Almeida',

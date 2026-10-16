@@ -13,9 +13,7 @@ const textos = obtenerTextos(idioma);
 
 const { nombre, rol, subtitulo, terminal, acciones } = textos.hero;
 
-/** Ritmo de la animación (segundos por carácter y pausas entre pasos). */
-const VELOCIDAD_TECLEO = 0.045;
-const PAUSA_COMANDO = 0.18;
+/** Ritmo de aparición de las líneas de salida (segundos entre pasos). */
 const PASO_SALIDA = 0.16;
 
 const comando1 = terminal.comandos[0] ?? '';
@@ -24,39 +22,21 @@ const comando2 = terminal.comandos[1] ?? '';
 /** Reloj compartido para escalonar toda la secuencia de la terminal. */
 let tiempo = 0.5;
 
-const retardoComando1 = tiempo;
-tiempo += comando1.length * VELOCIDAD_TECLEO + PAUSA_COMANDO;
-
-/** Salidas de `apt update`, una detrás de otra. */
-const salidasActualizar = terminal.actualizar.map((texto) => {
+const salidasActualizar = (terminal.actualizar ?? []).map((texto) => {
 	const retardo = tiempo;
 	tiempo += PASO_SALIDA;
 	return { texto, retardo };
 });
 tiempo += 0.15;
 
-const retardoComando2 = tiempo;
-tiempo += comando2.length * VELOCIDAD_TECLEO + PAUSA_COMANDO;
-
-/** Salidas de `apt install` (incluye el nombre del paquete). */
 const salidasInstalar = terminal.instalar.map((texto) => {
 	const retardo = tiempo;
 	tiempo += PASO_SALIDA;
 	return { texto, retardo };
 });
-tiempo += 0.1;
-
-const retardoNombre = tiempo;
-tiempo += 0.3;
-const retardoRol = tiempo;
 
 /** El texto de entrada del hero aparece cuando termina la terminal. */
 const retardoBase = Math.min(tiempo, 2.6);
-
-/** Cuenta de caracteres y ancho final (`ch`) para la animación de tecleo. */
-function estiloTecleo(texto: string, retardo: number): string {
-	return `--caracteres: ${texto.length}; --longitud: ${texto.length}ch; --retardo: ${retardo.toFixed(2)}s;`;
-}
 
 /** Retardo para las líneas de salida que sólo se desvanecen. */
 function estiloSalida(retardo: number): string {
@@ -96,9 +76,7 @@ function estiloSalida(retardo: number): string {
 				<div class="terminal__cuerpo">
 					<p class="terminal__linea">
 						<span class="terminal__prompt">{terminal.prompt}</span>
-						<span class="terminal__tecleo" style={estiloTecleo(comando1, retardoComando1)}>
-							{comando1}
-						</span>
+						<span class="terminal__comando">{comando1}</span>
 					</p>
 					{
 						salidasActualizar.map((salida) => (
@@ -110,9 +88,7 @@ function estiloSalida(retardo: number): string {
 
 					<p class="terminal__linea">
 						<span class="terminal__prompt">{terminal.prompt}</span>
-						<span class="terminal__tecleo" style={estiloTecleo(comando2, retardoComando2)}>
-							{comando2}
-						</span>
+						<span class="terminal__comando">{comando2}</span>
 					</p>
 					{
 						salidasInstalar.map((salida) => (
@@ -121,13 +97,6 @@ function estiloSalida(retardo: number): string {
 							</p>
 						))
 					}
-
-					<p class="terminal__salida terminal__salida--nombre" style={estiloSalida(retardoNombre)}>
-						{nombre}
-					</p>
-					<p class="terminal__salida terminal__salida--rol" style={estiloSalida(retardoRol)}>
-						{rol}
-					</p>
 				</div>
 			</div>
 		</div>
