@@ -12,7 +12,7 @@ export const es = {
 	},
 
 	navegacion: {
-		marca: 'Ariel Almeida',
+		marca: 'ariel@almeida:~',
 		inicio: 'Inicio',
 		sobreMi: 'Sobre mí',
 		proyectos: 'Proyectos',
@@ -21,24 +21,21 @@ export const es = {
 		principal: 'Navegación principal',
 		menu: 'Abrir menú',
 		cambiarTema: 'Cambiar entre tema claro y oscuro',
+		cambiarIdioma: 'Cambiar idioma',
 		cerrarMenu: 'Cerrar menú',
 	},
 
 	hero: {
 		terminal: {
-			titulo: 'ariel@debian: ~',
-			prompt: 'ariel@debian:~$',
+			titulo: 'ariel@almeida: ~',
+			prompt: 'ariel@almeida:~$',
 			comandos: ['sudo apt update', 'sudo apt install ariel-almeida'],
 			actualizar: [
 				'Leyendo listas de paquetes... Hecho',
 				'Construyendo árbol de dependencias... Hecho',
 				'Todos los paquetes están actualizados.',
 			],
-			instalar: [
-				'Leyendo listas de paquetes... Hecho',
-				'Se instalarán los siguientes paquetes NUEVOS:',
-				'  ariel-almeida',
-			],
+			instalar: ['  ariel-almeida  soporte 24/7  fiabilidad  adaptabilidad'],
 			etiqueta: 'Terminal Debian simulada con mi presentación',
 		},
 		nombre: 'Ariel Almeida',
@@ -52,7 +49,6 @@ export const es = {
 
 	sobreMi: {
 		titulo: 'Sobre mí',
-		estado: 'Disponible para nuevos proyectos',
 		altFoto: 'Foto profesional de Martín Ariel Almeida',
 		nombre: 'Martín Ariel Almeida',
 		rol: 'Desarrollador Backend Java',
@@ -60,7 +56,6 @@ export const es = {
 			'Soy Martín Ariel Almeida, Técnico Universitario en Programación por la Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
 			'Oriento mi carrera al desarrollo backend, con especial interés en el ecosistema Java y Spring Boot, la construcción de APIs REST, la gestión de bases de datos y el desarrollo de aplicaciones web robustas, seguras y escalables.',
 			'Me interesa desarrollar soluciones que resuelvan problemas reales, aplicando buenas prácticas de programación, principios de diseño, arquitectura de software y herramientas modernas de desarrollo.',
-			'Mi objetivo profesional es incorporarme a un equipo de desarrollo donde pueda aportar mis conocimientos, seguir creciendo como desarrollador backend y participar en proyectos de calidad, especialmente en entornos fintech, bancarios y empresariales.',
 		],
 		formacion: {
 			etiqueta: 'Formación académica',

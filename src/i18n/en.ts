@@ -10,7 +10,7 @@ export const en: Textos = {
 	},
 
 	navegacion: {
-		marca: 'Ariel Almeida',
+		marca: 'ariel@almeida:~',
 		inicio: 'Home',
 		sobreMi: 'About me',
 		proyectos: 'Projects',
@@ -19,24 +19,21 @@ export const en: Textos = {
 		principal: 'Main navigation',
 		menu: 'Open menu',
 		cambiarTema: 'Switch between light and dark theme',
+		cambiarIdioma: 'Change language',
 		cerrarMenu: 'Close menu',
 	},
 
 	hero: {
 		terminal: {
-			titulo: 'ariel@debian: ~',
-			prompt: 'ariel@debian:~$',
+			titulo: 'ariel@almeida: ~',
+			prompt: 'ariel@almeida:~$',
 			comandos: ['sudo apt update', 'sudo apt install ariel-almeida'],
 			actualizar: [
 				'Reading package lists... Done',
 				'Building dependency tree... Done',
 				'All packages are up to date.',
 			],
-			instalar: [
-				'Reading package lists... Done',
-				'The following NEW packages will be installed:',
-				'  ariel-almeida',
-			],
+			instalar: ['  ariel-almeida  24/7 support  reliability  adaptability'],
 			etiqueta: 'Simulated Debian terminal with my introduction',
 		},
 		nombre: 'Ariel Almeida',
@@ -50,7 +47,6 @@ export const en: Textos = {
 
 	sobreMi: {
 		titulo: 'About me',
-		estado: 'Available for new projects',
 		altFoto: 'Professional photo of Martín Ariel Almeida',
 		nombre: 'Martín Ariel Almeida',
 		rol: 'Java Backend Developer',
@@ -58,7 +54,6 @@ export const en: Textos = {
 			'I am Martín Ariel Almeida, a University Technician in Programming from the Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
 			'I am focusing my career on backend development, with a special interest in the Java and Spring Boot ecosystem, REST API design, database management and the development of robust, secure and scalable web applications.',
 			'I am interested in building solutions that solve real problems, applying good programming practices, design principles, software architecture and modern development tools.',
-			'My professional goal is to join a development team where I can contribute my knowledge, keep growing as a backend developer and take part in quality projects, especially in fintech, banking and enterprise environments.',
 		],
 		formacion: {
 			etiqueta: 'Education',

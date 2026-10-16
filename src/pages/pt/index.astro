@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../componentes/Hero.astro';
+import SobreMi from '../../componentes/SobreMi.astro';
+import Proyectos from '../../componentes/Proyectos.astro';
+import Contacto from '../../componentes/Contacto.astro';
+import { obtenerTextos, type Idioma } from '../../i18n';
+
+const idioma: Idioma = 'pt';
+const textos = obtenerTextos(idioma);
+---
+<BaseLayout idioma={idioma} titulo={textos.meta.titulo} descripcion={textos.meta.descripcion}>
+	<Hero idioma={idioma} />
+	<SobreMi idioma={idioma} />
+	<Proyectos idioma={idioma} />
+	<Contacto idioma={idioma} />
+</BaseLayout>

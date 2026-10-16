@@ -10,7 +10,7 @@ interface Props {
 
 const { idioma = idiomaPorDefecto } = Astro.props;
 const textos = obtenerTextos(idioma);
-const { titulo, estado, altFoto, nombre, rol, presentacion, formacion, stacks, idiomas } = textos.sobreMi;
+	const { titulo, altFoto, nombre, rol, presentacion, formacion, stacks, idiomas } = textos.sobreMi;
 ---
 
 <section id="sobre-mi" class="seccion sobre-mi" aria-labelledby="titulo-sobre-mi">
@@ -29,7 +29,6 @@ const { titulo, estado, altFoto, nombre, rol, presentacion, formacion, stacks, i
 						loading="lazy"
 						decoding="async"
 					/>
-					<span class="perfil__estado">{estado}</span>
 				</div>
 			</figure>
 

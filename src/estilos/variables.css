@@ -35,6 +35,7 @@
 	--color-magenta: #b45309; /* ámbar oscuro: badges y etiquetas legibles */
 	--color-amarillo: #f59e0b; /* ámbar base: bordes y fondos suaves */
 	--color-exito: #0b6b3a; /* verde legible para mensajes de éxito */
+	--color-debian: #a80030; /* rojo Debian (swirl): prompt de la marca */
 
 	--color-acento: var(--color-cian);
 	--color-ambar: var(--color-amarillo);
@@ -127,6 +128,7 @@
 	--color-magenta: #f5a524;
 	--color-amarillo: #f59e0b;
 	--color-exito: #30d158;
+	--color-debian: #d70a53; /* rojo Debian aclarado para el fondo grafito */
 
 	/* --- Texto (grises de Apple en modo oscuro) --- */
 	--color-texto: #f5f5f7;

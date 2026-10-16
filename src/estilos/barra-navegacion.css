@@ -24,20 +24,51 @@
 	height: 100%;
 }
 
-/* --- Marca --------------------------------------------------------------- */
+/* --- Marca: prompt estilo Linux (ariel@debian:~) ------------------------- */
 .navbar__marca {
-	font-family: var(--fuente-titulos);
-	font-size: var(--texto-base);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-family: var(--fuente-mono);
+	font-size: var(--texto-sm);
 	font-weight: 600;
-	letter-spacing: -0.02em;
+	letter-spacing: 0;
 	color: var(--color-texto);
 	white-space: nowrap;
 	transition: opacity var(--velocidad) var(--curva);
 }
 
 .navbar__marca:hover {
-	color: var(--color-texto);
-	opacity: 0.7;
+	opacity: 0.75;
+}
+
+.navbar__marca-icono {
+	flex-shrink: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.navbar__marca-texto {
+	color: var(--color-debian);
+}
+
+.navbar__marca-cursor {
+	width: 0.5rem;
+	height: 1.1em;
+	margin-left: -0.15rem;
+	background: var(--color-debian);
+	animation: parpadeo-cursor 1.1s steps(2, start) infinite;
+}
+
+@keyframes parpadeo-cursor {
+	0%,
+	50% {
+		opacity: 1;
+	}
+	50.01%,
+	100% {
+		opacity: 0;
+	}
 }
 
 /* --- Botón de menú (mobile) ---------------------------------------------- */
@@ -175,8 +206,38 @@
 	display: block;
 }
 
+/* Selector de idioma (minimalista, estilo vidrio). */
+.selector-idioma {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	color: var(--color-texto);
+	background: var(--superficie-vidrio-suave);
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-pill);
+	cursor: pointer;
+	transition: background-color var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva),
+		color var(--velocidad) var(--curva), transform var(--velocidad) var(--curva);
+}
+
+.selector-idioma:hover {
+	background: var(--color-fondo-2);
+	border-color: var(--borde-vidrio-fuerte);
+	transform: scale(1.05);
+}
+
+.selector-idioma__icono {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+
 /* El botón dentro de la lista de navegación hereda el espaciado del menú. */
-.navbar__lista .selector-tema {
+.navbar__lista .selector-tema,
+.navbar__lista .selector-idioma {
 	margin-left: 0.25rem;
 }
 
@@ -227,5 +288,11 @@
 	.navbar__enlace:focus-visible::after {
 		left: 0.85rem;
 		right: 0.85rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.navbar__marca-cursor {
+		animation: none;
 	}
 }
