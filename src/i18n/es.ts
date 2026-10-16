@@ -81,12 +81,7 @@ export const es = {
 						descripcion: 'Lenguaje principal para la lógica de negocio y las aplicaciones backend.',
 						destacado: true,
 					},
-					{
-						nombre: 'PostgreSQL',
-						descripcion: 'Base de datos relacional, consultas y modelado.',
-						destacado: true,
-					},
-					{
+										{
 						nombre: 'MongoDB',
 						descripcion: 'Base de datos NoSQL para documentos.',
 						destacado: true,
@@ -116,29 +111,18 @@ export const es = {
 						descripcion: 'Diseño e implementación de servicios entre aplicaciones.',
 						destacado: true,
 					},
-					{
-						nombre: 'Hibernate',
-						descripcion: 'Mapeo objeto-relacional (JPA) y acceso a bases de datos.',
-						destacado: false,
-					},
-					{
+										{
 						nombre: 'Docker',
 						descripcion: 'Contenedores para desarrollo, despliegue y consistencia entre entornos.',
 						destacado: true,
 					},
-					{
-						nombre: 'Maven',
-						descripcion: 'Gestión de dependencias y construcción de proyectos Java.',
-						destacado: false,
-					},
-					{
+										{
 						nombre: 'Angular',
 						descripcion: 'Interfaces web e integración con servicios backend.',
 						destacado: false,
 					},
 
 					{ nombre: 'Git', descripcion: 'Control de versiones del código fuente.', destacado: false },
-					{ nombre: 'GitHub', descripcion: 'Repositorios y colaboración.', destacado: false },
 					{
 						nombre: 'Debian',
 						descripcion: 'Distribución base de mi entorno de desarrollo.',
