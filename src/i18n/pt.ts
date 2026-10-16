@@ -55,7 +55,6 @@ export const pt: Textos = {
 			'Sou Martín Ariel Almeida, Técnico Universitário em Programação pela Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
 			'Direciono minha carreira ao desenvolvimento backend, com especial interesse no ecossistema Java e Spring Boot, na construção de APIs REST, no gerenciamento de bancos de dados e no desenvolvimento de aplicações web robustas, seguras e escaláveis.',
 			'Tenho interesse em desenvolver soluções que resolvam problemas reais, aplicando boas práticas de programação, princípios de design, arquitetura de software e ferramentas modernas de desenvolvimento.',
-			'Meu objetivo profissional é integrar uma equipe de desenvolvimento onde eu possa contribuir com meus conhecimentos, continuar crescendo como desenvolvedor backend e participar de projetos de qualidade, especialmente em ambientes de fintech, bancos e empresas.',
 		],
 		formacion: {
 			etiqueta: 'Formação acadêmica',
