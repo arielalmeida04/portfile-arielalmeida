@@ -59,6 +59,39 @@ const textos = obtenerTextos(idioma);
 			</div>
 		</div>
 
+		<section class="certificaciones revelar" aria-labelledby="titulo-certificaciones">
+			<header class="certificaciones__encabezado">
+				<h3 id="titulo-certificaciones" class="perfil__etiqueta">{textos.sobreMi.certificaciones.etiqueta}</h3>
+				<p class="certificaciones__descripcion">{textos.sobreMi.certificaciones.descripcion}</p>
+			</header>
+			<div class="carrusel" data-carrusel>
+				<button
+					class="carrusel__boton carrusel__boton--anterior"
+					type="button"
+					aria-label="Anterior"
+					data-boton-anterior
+				>
+					<span aria-hidden="true">&#10094;</span>
+				</button>
+				<div class="carrusel__contenedor" data-carrusel-contenedor>
+					<img class="carrusel__imagen" src="/img/1731339670085.jpeg" alt="Certificación" loading="lazy" decoding="async" />
+					<img class="carrusel__imagen" src="/img/1734828210120.jpeg" alt="Certificación" loading="lazy" decoding="async" />
+					<img class="carrusel__imagen" src="/img/1775245049359.jpeg" alt="Certificación" loading="lazy" decoding="async" />
+					<img class="carrusel__imagen" src="/img/1781032495957.jpeg" alt="Certificación" loading="lazy" decoding="async" />
+					<img class="carrusel__imagen" src="/img/1786647657983.jpeg" alt="Certificación" loading="lazy" decoding="async" />
+				</div>
+				<button
+					class="carrusel__boton carrusel__boton--siguiente"
+					type="button"
+					aria-label="Siguiente"
+					data-boton-siguiente
+				>
+					<span aria-hidden="true">&#10095;</span>
+				</button>
+				<div class="carrusel__indicadores" data-carrusel-indicadores></div>
+			</div>
+		</section>
+
 		<div class="stacks">
 			<section class="stack stack--principal revelar" aria-labelledby="titulo-stack-principal">
 				<header class="stack__encabezado">
@@ -126,4 +159,43 @@ const textos = obtenerTextos(idioma);
 			</section>
 		</div>
 	</div>
+	<script is:inline>
+		(function () {
+			const carrusel = document.querySelector('[data-carrusel]');
+			if (!carrusel) return;
+			const contenedor = carrusel.querySelector('[data-carrusel-contenedor]');
+			const anterior = carrusel.querySelector('[data-boton-anterior]');
+			const siguiente = carrusel.querySelector('[data-boton-siguiente]');
+			const indicadores = carrusel.querySelector('[data-carrusel-indicadores]');
+			const imagenes = carrusel.querySelectorAll('.carrusel__imagen');
+			if (!contenedor || !imagenes.length) return;
+			let indice = 0;
+			function mostrar(i) {
+				indice = (i + imagenes.length) % imagenes.length;
+				contenedor.scrollTo({ left: imagenes[indice].offsetLeft, behavior: 'smooth' });
+				indicadores.querySelectorAll('button').forEach((b, j) => {
+					b.setAttribute('aria-current', String(j === indice));
+				});
+			}
+			imagenes.forEach((_, i) => {
+				const btn = document.createElement('button');
+				btn.className = 'carrusel__indicador';
+				btn.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
+				btn.addEventListener('click', () => mostrar(i));
+				indicadores.appendChild(btn);
+			});
+			anterior?.addEventListener('click', () => mostrar(indice - 1));
+			siguiente?.addEventListener('click', () => mostrar(indice + 1));
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((e) => {
+						if (e.isIntersecting) mostrar(indice);
+					});
+				},
+				{ threshold: 0.6 }
+			);
+			imagenes.forEach((img) => observer.observe(img));
+			mostrar(0);
+		})();
+	</script>
 </section>

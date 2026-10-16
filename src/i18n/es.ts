@@ -67,6 +67,10 @@ export const es = {
 				{ etiqueta: 'Estado', valor: 'Título finalizado' },
 			],
 		},
+		certificaciones: {
+			etiqueta: 'Certificaciones',
+			descripcion: 'Certificaciones y cursos completados.',
+		},
 		stacks: {
 			principal: {
 				etiqueta: 'Stack principal',

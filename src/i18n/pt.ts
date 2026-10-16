@@ -65,6 +65,10 @@ export const pt: Textos = {
 				{ etiqueta: 'Status', valor: 'Título concluído' },
 			],
 		},
+		certificaciones: {
+			etiqueta: 'Certificações',
+			descripcion: 'Certificações e cursos concluídos.',
+		},
 		stacks: {
 			principal: {
 				etiqueta: 'Stack principal',
