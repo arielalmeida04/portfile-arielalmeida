@@ -49,7 +49,6 @@ export const es = {
 
 	sobreMi: {
 		titulo: 'Sobre mí',
-		estado: 'Disponible para nuevos proyectos',
 		altFoto: 'Foto profesional de Martín Ariel Almeida',
 		nombre: 'Martín Ariel Almeida',
 		rol: 'Desarrollador Backend Java',

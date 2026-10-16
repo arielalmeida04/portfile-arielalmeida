@@ -47,7 +47,6 @@ export const en: Textos = {
 
 	sobreMi: {
 		titulo: 'About me',
-		estado: 'Available for new projects',
 		altFoto: 'Professional photo of Martín Ariel Almeida',
 		nombre: 'Martín Ariel Almeida',
 		rol: 'Java Backend Developer',

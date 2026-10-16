@@ -47,7 +47,6 @@ export const pt: Textos = {
 
 	sobreMi: {
 		titulo: 'Sobre mim',
-		estado: 'Disponível para novos projetos',
 		altFoto: 'Foto profissional de Martín Ariel Almeida',
 		nombre: 'Martín Ariel Almeida',
 		rol: 'Desenvolvedor Backend Java',
