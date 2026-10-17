@@ -1,0 +1,63 @@
+---
+/**
+ * Fondo decorativo del sitio: bandas onduladas (tipo wallpaper) apiladas y
+ * desenfocadas. Es puramente visual, no interactúa ni se lee.
+ *
+ * La geometría es fija; los colores de cada capa salen de variables CSS
+ * (`--forma-*`) definidas en `variables.css`, así que el mismo dibujo se
+ * adapta solo al tema claro u oscuro. Los estilos están en `globales.css`.
+ */
+---
+
+<div class="fondo-formas" aria-hidden="true">
+	<svg
+		class="fondo-formas__svg"
+		viewBox="0 0 1440 900"
+		preserveAspectRatio="none"
+		focusable="false"
+	>
+		<defs>
+			<linearGradient id="forma-base" class="g-base" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0"></stop>
+				<stop offset="1"></stop>
+			</linearGradient>
+			<linearGradient id="forma-azul" class="g-azul" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0"></stop>
+				<stop offset="1"></stop>
+			</linearGradient>
+			<linearGradient id="forma-naranja" class="g-naranja" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0"></stop>
+				<stop offset="1"></stop>
+			</linearGradient>
+			<linearGradient id="forma-rojo" class="g-rojo" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0"></stop>
+				<stop offset="1"></stop>
+			</linearGradient>
+			<linearGradient id="forma-magenta" class="g-magenta" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0"></stop>
+				<stop offset="1"></stop>
+			</linearGradient>
+		</defs>
+
+		<rect width="1440" height="900" fill="url(#forma-base)"></rect>
+
+		<g class="fondo-formas__olas">
+			<path
+				fill="url(#forma-azul)"
+				d="M-120 380 C 200 250 480 205 760 300 C 1000 380 1200 425 1560 380 L1560 1020 L-120 1020 Z"
+			></path>
+			<path
+				fill="url(#forma-naranja)"
+				d="M-120 520 C 180 470 380 300 640 300 C 900 300 1050 430 1220 400 C 1360 375 1460 360 1560 360 L1560 1020 L-120 1020 Z"
+			></path>
+			<path
+				fill="url(#forma-rojo)"
+				d="M-120 560 C 60 420 260 335 430 380 C 570 418 650 520 830 560 C 1010 600 1210 600 1560 560 L1560 1020 L-120 1020 Z"
+			></path>
+			<path
+				fill="url(#forma-magenta)"
+				d="M-120 730 C 200 645 480 665 720 705 C 980 750 1250 725 1560 690 L1560 1020 L-120 1020 Z"
+			></path>
+		</g>
+	</svg>
+</div>

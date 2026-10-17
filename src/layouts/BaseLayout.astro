@@ -1,6 +1,7 @@
 ---
 import '../estilos/globales.css';
 import BarraNavegacion from '../componentes/BarraNavegacion.astro';
+import Fondo from '../componentes/Fondo.astro';
 import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
 
 interface Props {
@@ -82,6 +83,8 @@ const descripcionFinal = descripcion ?? textos.meta.descripcion;
 		</script>
 	</head>
 	<body>
+		<Fondo />
+
 		<a class="enlace-salto" href="#contenido-principal">{textos.navegacion.alternativa}</a>
 
 		<BarraNavegacion idioma={idioma} />

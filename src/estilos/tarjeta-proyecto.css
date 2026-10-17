@@ -9,12 +9,12 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background: var(--superficie-vidrio);
+	background: var(--superficie-vidrio-fuerte);
 	backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
 	-webkit-backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
 	border: 1px solid var(--borde-vidrio);
 	border-radius: var(--radio-lg);
-	box-shadow: var(--sombra-panel);
+	box-shadow: var(--sombra-consola);
 	overflow: hidden;
 	font-family: var(--fuente-mono);
 	transition: transform var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva),
@@ -25,7 +25,7 @@
 .proyecto:focus-within {
 	transform: translateY(-4px);
 	border-color: var(--borde-vidrio-fuerte);
-	box-shadow: var(--sombra-panel-alta);
+	box-shadow: var(--sombra-consola-alta);
 }
 
 /* --- Barra de ventana ----------------------------------------------------- */

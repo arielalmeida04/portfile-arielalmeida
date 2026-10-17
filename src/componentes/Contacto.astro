@@ -2,6 +2,7 @@
 import '../estilos/contacto.css';
 import { obtenerTextos, idiomaPorDefecto, type Idioma } from '../i18n';
 import { redes } from '../datos/redes';
+import IconoTecnologia from './IconoTecnologia.astro';
 
 interface Props {
 	/** Idioma de los textos de la sección. */
@@ -105,13 +106,27 @@ const etiquetas: Record<string, string> = {
 									<span class="contacto__red-indice" aria-hidden="true">
 										{String(indice + 1).padStart(2, '0')}
 									</span>
-									<span>{etiquetasRedes[red.id]}</span>
+									<span class="contacto__red-logo" aria-hidden="true">
+										<IconoTecnologia tecnologia={red.id} />
+									</span>
+									<span class="contacto__red-texto">{etiquetasRedes[red.id]}</span>
 									<span class="contacto__red-flecha" aria-hidden="true">-&gt;</span>
 								</a>
 							</li>
 						))
 					}
 				</ul>
+
+				<div class="contacto__acciones">
+					<a
+						class="boton boton--fantasma"
+						href="/MartinArielAlmeida.pdf"
+						download="MartinArielAlmeida.pdf"
+						aria-label={etiquetasRedes.descargarCv}
+					>
+						{etiquetasRedes.descargarCv}
+					</a>
+				</div>
 			</div>
 
 			<form

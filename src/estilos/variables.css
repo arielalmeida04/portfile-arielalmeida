@@ -1,6 +1,6 @@
 /* ==========================================================================
    Tokens de diseño: tema claro estilo Apple.
-   Fondo blanco con mezclas de color suaves (aurora), paneles de vidrio
+   Fondo con olas de color suaves (ver `--forma-*`), paneles de vidrio
    claros, tipografía del sistema (SF Pro en Mac/iOS) y azul Apple como CTA.
    ========================================================================== */
 
@@ -26,6 +26,21 @@
 
 	--blur-vidrio: 20px;
 	--saturacion-vidrio: 180%;
+
+	/* --- Fondo de formas (olas apiladas estilo wallpaper) ---
+	   Cada par `-de`/`-a` es el color de arriba y de abajo del degradado de
+	   cada capa. En el tema claro son tonos pastel para no competir con el
+	   texto; en oscuro se vuelven más vivos. */
+	--forma-base-de: #e3efff;
+	--forma-base-a: #f4f9ff;
+	--forma-azul-de: #a4c9ff;
+	--forma-azul-a: #86b6ff;
+	--forma-naranja-de: #ffbb6b;
+	--forma-naranja-a: #ff9b34;
+	--forma-rojo-de: #ff97b0;
+	--forma-rojo-a: #ff7a97;
+	--forma-magenta-de: #d7a8ff;
+	--forma-magenta-a: #ecd0ff;
 
 	/* --- Acentos ---
 	   Se mantienen los nombres históricos (cian/magenta/amarillo) para no
@@ -54,6 +69,10 @@
 
 	--sombra-panel: 0 8px 30px rgba(0, 0, 0, 0.08);
 	--sombra-panel-alta: 0 20px 55px rgba(0, 0, 0, 0.13);
+
+	/* Consolas (terminales): una sombra algo más marcada para que se despeguen un poco del fondo. */
+	--sombra-consola: 0 12px 36px rgba(0, 0, 0, 0.13);
+	--sombra-consola-alta: 0 24px 62px rgba(0, 0, 0, 0.19);
 
 	/* --- Tipografía: pila del sistema (SF Pro en Mac/iOS, Inter como fallback) --- */
 	--fuente-titulos: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Plus Jakarta Sans',
@@ -122,6 +141,19 @@
 	--borde-vidrio: rgba(255, 255, 255, 0.1);
 	--borde-vidrio-fuerte: rgba(255, 255, 255, 0.18);
 
+	/* --- Fondo de formas en oscuro ("indigo nocturno"): base azul muy oscura
+	   con un degradado violeta->teal y un dejo azul/magenta abajo. --- */
+	--forma-base-de: #0a0b16;
+	--forma-base-a: #05060d;
+	--forma-azul-de: #2b2a5e;
+	--forma-azul-a: #141435;
+	--forma-naranja-de: #2f6f8f;
+	--forma-naranja-a: #173a4d;
+	--forma-rojo-de: #5c3670;
+	--forma-rojo-a: #2a1836;
+	--forma-magenta-de: #26407e;
+	--forma-magenta-a: #111d3d;
+
 	/* --- Acentos (azul y ámbar de Apple para fondo oscuro) --- */
 	--color-cian: #4da3ff;
 	--color-cian-fuerte: #0a84ff;
@@ -140,4 +172,8 @@
 
 	--sombra-panel: 0 8px 30px rgba(0, 0, 0, 0.5);
 	--sombra-panel-alta: 0 20px 55px rgba(0, 0, 0, 0.65);
+
+	/* Consolas (terminales): sombra algo más marcada también en oscuro. */
+	--sombra-consola: 0 12px 36px rgba(0, 0, 0, 0.62);
+	--sombra-consola-alta: 0 24px 62px rgba(0, 0, 0, 0.74);
 }
