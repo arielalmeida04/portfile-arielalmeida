@@ -213,6 +213,7 @@ export const en: Textos = {
 			linkedin: 'LinkedIn',
 			github: 'GitHub',
 			verPerfil: 'View profile',
+			descargarCv: 'Download CV',
 		},
 		formulario: {
 			titulo: 'Contact form',

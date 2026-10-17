@@ -215,6 +215,7 @@ export const es = {
 			linkedin: 'LinkedIn',
 			github: 'GitHub',
 			verPerfil: 'Ver perfil',
+			descargarCv: 'Descargar CV',
 		},
 		formulario: {
 			titulo: 'Formulario de contacto',
