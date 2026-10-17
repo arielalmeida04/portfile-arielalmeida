@@ -1,14 +1,14 @@
 /* ==========================================================================
-   Tarjeta de proyecto: panel de vidrio claro con borde sutil y elevación
-   al pasar el mouse. Chips de tecnologías en ámbar.
+   Tarjeta de proyecto: ventana de terminal minimalista.
+   Barra con semaforo, cuerpo monoespaciado, recuadro de vista previa y
+   enlace estilo comando.
    ========================================================================== */
 
-.tarjeta {
+.proyecto {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: var(--espacio-sm);
-	padding: var(--espacio-md);
+	height: 100%;
 	background: var(--superficie-vidrio);
 	backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
 	-webkit-backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
@@ -16,76 +16,141 @@
 	border-radius: var(--radio-lg);
 	box-shadow: var(--sombra-panel);
 	overflow: hidden;
+	font-family: var(--fuente-mono);
 	transition: transform var(--velocidad) var(--curva), border-color var(--velocidad) var(--curva),
 		box-shadow var(--velocidad) var(--curva);
 }
 
-/* Luz ambiental interna en la parte superior */
-.tarjeta::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-	background: radial-gradient(120% 70% at 50% -10%, rgba(0, 113, 227, 0.12), transparent 62%);
-	opacity: 0.8;
-	transition: opacity var(--velocidad) var(--curva);
-}
-
-/* Línea superior fina azul -> ámbar */
-.tarjeta::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(0, 113, 227, 0.5), rgba(245, 158, 11, 0.4), transparent);
-	opacity: 0.6;
-	transition: opacity var(--velocidad) var(--curva);
-}
-
-.tarjeta:hover,
-.tarjeta:focus-within {
-	transform: translateY(-5px);
+.proyecto:hover,
+.proyecto:focus-within {
+	transform: translateY(-4px);
 	border-color: var(--borde-vidrio-fuerte);
 	box-shadow: var(--sombra-panel-alta);
 }
 
-.tarjeta:hover::before,
-.tarjeta:focus-within::before {
-	opacity: 1;
+/* --- Barra de ventana ----------------------------------------------------- */
+.proyecto__barra {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.65rem 1rem;
+	border-bottom: 1px solid var(--borde-vidrio);
+	background: var(--superficie-vidrio-suave);
 }
 
-.tarjeta:hover::after,
-.tarjeta:focus-within::after {
-	opacity: 1;
+.proyecto__punto {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
 }
 
-.tarjeta__indice {
-	position: relative;
-	font-family: var(--fuente-mono);
+.proyecto__punto:nth-child(1) {
+	background: #ff5f57;
+}
+
+.proyecto__punto:nth-child(2) {
+	background: #febc2e;
+}
+
+.proyecto__punto:nth-child(3) {
+	background: #28c840;
+}
+
+.proyecto__pestana {
+	margin-left: var(--espacio-xs);
 	font-size: var(--texto-xs);
-	font-weight: 600;
-	letter-spacing: 0.2em;
-	color: var(--color-cian);
+	color: var(--color-texto-tenue);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-.tarjeta__titulo {
+/* --- Cuerpo --------------------------------------------------------------- */
+.proyecto__cuerpo {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: var(--espacio-sm);
+	padding: var(--espacio-md) 1.15rem 1.25rem;
+}
+
+.proyecto__linea {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6ch;
+	font-size: var(--texto-xs);
+	color: var(--color-texto-tenue);
+}
+
+.proyecto__prompt {
+	color: var(--color-debian);
+}
+
+.proyecto__comando {
+	color: var(--color-texto);
+}
+
+/* --- Recuadro de vista previa (placeholder grafico) ----------------------- */
+.proyecto__vista {
 	position: relative;
-	font-size: var(--texto-lg);
+	display: grid;
+	place-items: center;
+	aspect-ratio: 16 / 10;
+	border: 1px solid var(--borde-vidrio);
+	border-radius: var(--radio-sm);
+	background:
+		repeating-linear-gradient(0deg, transparent 0 15px, var(--borde-vidrio) 15px 16px),
+		repeating-linear-gradient(90deg, transparent 0 15px, var(--borde-vidrio) 15px 16px),
+		linear-gradient(135deg, color-mix(in srgb, var(--color-cian) 10%, transparent), transparent 65%),
+		var(--superficie-vidrio-suave);
+	overflow: hidden;
+}
+
+.proyecto__vista::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		115deg,
+		transparent 42%,
+		color-mix(in srgb, var(--color-cian) 24%, transparent) 50%,
+		transparent 58%
+	);
+	transform: translateX(-120%);
+	transition: transform 0.75s var(--curva);
+}
+
+.proyecto:hover .proyecto__vista::after {
+	transform: translateX(120%);
+}
+
+.proyecto__vista-texto {
+	position: relative;
+	font-size: var(--texto-xs);
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-texto-tenue);
+	opacity: 0.75;
+}
+
+/* --- Textos --------------------------------------------------------------- */
+.proyecto__titulo {
+	font-family: var(--fuente-mono);
+	font-size: var(--texto-base);
 	font-weight: 600;
 	color: var(--color-texto);
 }
 
-.tarjeta__descripcion {
-	position: relative;
+.proyecto__descripcion {
 	flex-grow: 1;
-	color: var(--color-texto-suave);
+	font-family: var(--fuente-sans);
 	font-size: var(--texto-sm);
+	line-height: 1.55;
+	color: var(--color-texto-suave);
 }
 
-.tarjeta__tecnologias {
-	position: relative;
+/* --- Tecnologias ---------------------------------------------------------- */
+.proyecto__tecnologias {
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--espacio-xs);
@@ -94,7 +159,7 @@
 	list-style: none;
 }
 
-.tarjeta__tecnologia {
+.proyecto__tecnologia {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.4rem;
@@ -118,8 +183,8 @@
 	color: var(--color-texto);
 }
 
-.tarjeta__enlace {
-	position: relative;
+/* --- Enlace --------------------------------------------------------------- */
+.proyecto__enlace {
 	align-self: flex-start;
 	margin-top: var(--espacio-xs);
 	font-size: var(--texto-sm);
@@ -128,23 +193,31 @@
 	transition: color var(--velocidad) var(--curva);
 }
 
-.tarjeta__enlace::after {
-	content: ' →';
-	display: inline-block;
-	transition: transform var(--velocidad) var(--curva);
+.proyecto__enlace::before {
+	content: '$ ';
+	color: var(--color-debian);
 }
 
-.tarjeta__enlace:hover {
+.proyecto__enlace-texto {
+	border-bottom: 1px solid transparent;
+	transition: border-color var(--velocidad) var(--curva);
+}
+
+.proyecto__enlace:hover {
 	color: var(--color-cian-fuerte);
 }
 
-.tarjeta__enlace:hover::after {
-	transform: translateX(4px);
+.proyecto__enlace:hover .proyecto__enlace-texto {
+	border-bottom-color: currentColor;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.tarjeta:hover,
-	.tarjeta:focus-within {
+	.proyecto:hover,
+	.proyecto:focus-within {
 		transform: none;
+	}
+
+	.proyecto:hover .proyecto__vista::after {
+		transform: translateX(-120%);
 	}
 }

@@ -196,6 +196,8 @@ export const es = {
 			},
 		],
 		etiquetaTecnologias: 'Tecnologías',
+		vistaPrevia: 'vista previa',
+		prompt: 'ariel@almeida:~/proyectos$',
 		abreNuevaPestana: 'Se abre en una nueva pestaña',
 	},
 

@@ -194,6 +194,8 @@ export const pt: Textos = {
 			},
 		],
 		etiquetaTecnologias: 'Tecnologias',
+		vistaPrevia: 'visualização',
+		prompt: 'ariel@almeida:~/projetos$',
 		abreNuevaPestana: 'Abre em uma nova aba',
 	},
 

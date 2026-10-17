@@ -10,7 +10,8 @@ interface Props {
 
 const { idioma = idiomaPorDefecto } = Astro.props;
 const textos = obtenerTextos(idioma);
-const { titulo, placeholders, etiquetaTecnologias, abreNuevaPestana } = textos.proyectos;
+const { titulo, placeholders, etiquetaTecnologias, abreNuevaPestana, vistaPrevia, prompt } =
+	textos.proyectos;
 ---
 
 <section id="proyectos" class="seccion proyectos" aria-labelledby="titulo-proyectos">
@@ -26,6 +27,8 @@ const { titulo, placeholders, etiquetaTecnologias, abreNuevaPestana } = textos.p
 							indice={indice + 1}
 							etiquetaTecnologias={etiquetaTecnologias}
 							abreNuevaPestana={abreNuevaPestana}
+							vistaPrevia={vistaPrevia}
+							prompt={prompt}
 						/>
 					</li>
 				))
