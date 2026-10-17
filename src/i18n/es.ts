@@ -194,6 +194,13 @@ export const es = {
 				enlace: '#',
 				etiquetaEnlace: 'Ver proyecto 3',
 			},
+			{
+				titulo: 'Proyecto 4',
+				descripcion: 'Descripción de ejemplo. Será reemplazada por un proyecto real.',
+				tecnologias: ['Java', 'Spring Boot', 'PostgreSQL'],
+				enlace: '#',
+				etiquetaEnlace: 'Ver proyecto 4',
+			},
 		],
 		etiquetaTecnologias: 'Tecnologías',
 		vistaPrevia: 'vista previa',

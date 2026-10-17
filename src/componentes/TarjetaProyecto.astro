@@ -24,12 +24,12 @@ const { proyecto, indice, etiquetaTecnologias, abreNuevaPestana, vistaPrevia, pr
 
 const esEnlaceExterno = /^https?:\/\//.test(proyecto.enlace);
 
-/** Nombre de archivo simulado a partir del título (se localiza solo). */
-const archivo = `${proyecto.titulo
+/** Nombre de paquete simulado a partir del título (se localiza solo). */
+const paquete = proyecto.titulo
 	.toLowerCase()
 	.normalize('NFD')
 	.replace(/[\u0300-\u036f]/g, '')
-	.replace(/\s+/g, '-')}.md`;
+	.replace(/\s+/g, '-');
 ---
 
 <article class="proyecto revelar" style={`--retardo-revelado: ${((indice - 1) * 0.08).toFixed(2)}s;`}>
@@ -37,13 +37,13 @@ const archivo = `${proyecto.titulo
 		<span class="proyecto__punto"></span>
 		<span class="proyecto__punto"></span>
 		<span class="proyecto__punto"></span>
-		<span class="proyecto__pestana">{archivo}</span>
+		<span class="proyecto__pestana">{paquete}</span>
 	</div>
 
 	<div class="proyecto__cuerpo">
 		<p class="proyecto__linea">
 			<span class="proyecto__prompt">{prompt}</span>
-			<span class="proyecto__comando">cat {archivo}</span>
+			<span class="proyecto__comando">apt show {paquete}</span>
 		</p>
 
 		<div class="proyecto__vista" aria-hidden="true">
