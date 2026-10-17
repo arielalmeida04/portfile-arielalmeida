@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Estilos globales: reset, base, fondo blanco mezclado con color (aurora),
-   vidrio claro, botones estilo Apple y aparición al hacer scroll.
+   Estilos globales: reset, base, fondo de olas de color, vidrio claro,
+   botones estilo Apple y aparición al hacer scroll.
    ========================================================================== */
 
 @import './variables.css';
@@ -95,33 +95,58 @@ ol[role='list'] {
 	border-radius: 6px;
 }
 
-/* --- Fondo: blanco mezclado con color (aurora intensa) --------------------
-   Base blanca sobre la que se mezclan halos azul, ámbar, rosa, turquesa y
-   violeta, dando un fondo claro con bastante color tipo Apple. */
-body::before {
-	content: '';
+/* --- Fondo: olas apiladas (estilo wallpaper) ------------------------------
+   Capa fija detrás del contenido con varias bandas onduladas superpuestas y
+   desenfocadas. Los colores salen de los tokens `--forma-*`, que cambian con
+   el tema; por eso la misma geometría sirve para claro y oscuro. */
+.fondo-formas {
 	position: fixed;
 	inset: 0;
 	z-index: var(--z-fondo);
 	pointer-events: none;
-	background:
-		radial-gradient(60rem 46rem at 10% 2%, rgba(0, 113, 227, 0.42), transparent 60%),
-		radial-gradient(52rem 42rem at 95% 6%, rgba(245, 158, 11, 0.4), transparent 60%),
-		radial-gradient(56rem 48rem at 82% 100%, rgba(236, 72, 153, 0.36), transparent 60%),
-		radial-gradient(50rem 44rem at 4% 96%, rgba(45, 212, 191, 0.38), transparent 60%),
-		radial-gradient(48rem 40rem at 50% 50%, rgba(139, 92, 246, 0.22), transparent 62%),
-		var(--color-fondo);
+	overflow: hidden;
 }
 
-/* Aurora del tema oscuro: los mismos halos, más vivos sobre el fondo grafito. */
-[data-tema='oscuro'] body::before {
-	background:
-		radial-gradient(60rem 46rem at 10% 2%, rgba(10, 132, 255, 0.4), transparent 60%),
-		radial-gradient(52rem 42rem at 95% 6%, rgba(245, 158, 11, 0.32), transparent 60%),
-		radial-gradient(56rem 48rem at 82% 100%, rgba(236, 72, 153, 0.3), transparent 60%),
-		radial-gradient(50rem 44rem at 4% 96%, rgba(45, 212, 191, 0.3), transparent 60%),
-		radial-gradient(48rem 40rem at 50% 50%, rgba(139, 92, 246, 0.24), transparent 62%),
-		var(--color-fondo);
+.fondo-formas__svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* El desenfoque da el "bloom" suave entre las capas. */
+.fondo-formas__olas {
+	filter: blur(26px);
+}
+
+/* Colores de cada degradado tomados de las variables del tema. */
+.fondo-formas .g-base stop:first-child {
+	stop-color: var(--forma-base-de);
+}
+.fondo-formas .g-base stop:last-child {
+	stop-color: var(--forma-base-a);
+}
+.fondo-formas .g-azul stop:first-child {
+	stop-color: var(--forma-azul-de);
+}
+.fondo-formas .g-azul stop:last-child {
+	stop-color: var(--forma-azul-a);
+}
+.fondo-formas .g-naranja stop:first-child {
+	stop-color: var(--forma-naranja-de);
+}
+.fondo-formas .g-naranja stop:last-child {
+	stop-color: var(--forma-naranja-a);
+}
+.fondo-formas .g-rojo stop:first-child {
+	stop-color: var(--forma-rojo-de);
+}
+.fondo-formas .g-rojo stop:last-child {
+	stop-color: var(--forma-rojo-a);
+}
+.fondo-formas .g-magenta stop:first-child {
+	stop-color: var(--forma-magenta-de);
+}
+.fondo-formas .g-magenta stop:last-child {
+	stop-color: var(--forma-magenta-a);
 }
 
 /* --- Utilidades de layout ------------------------------------------------ */
