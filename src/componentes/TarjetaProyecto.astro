@@ -8,45 +8,71 @@ export type Proyecto = Textos['proyectos']['placeholders'][number];
 interface Props {
 	/** Proyecto a mostrar (textos ya resueltos en el idioma activo). */
 	proyecto: Proyecto;
-	/** Posición en la lista, usada para el número decorativo. */
+	/** Posición en la lista, usada para escalonar la aparición. */
 	indice: number;
 	/** Etiqueta accesible del listado de tecnologías. */
 	etiquetaTecnologias: string;
 	/** Texto accesible para enlaces que abren en otra pestaña. */
 	abreNuevaPestana: string;
+	/** Texto del recuadro de vista previa. */
+	vistaPrevia: string;
+	/** Prompt simulado de la terminal. */
+	prompt: string;
 }
 
-const { proyecto, indice, etiquetaTecnologias, abreNuevaPestana } = Astro.props;
+const { proyecto, indice, etiquetaTecnologias, abreNuevaPestana, vistaPrevia, prompt } = Astro.props;
 
-const numero = String(indice).padStart(2, '0');
 const esEnlaceExterno = /^https?:\/\//.test(proyecto.enlace);
+
+/** Nombre de paquete simulado a partir del título (se localiza solo). */
+const paquete = proyecto.titulo
+	.toLowerCase()
+	.normalize('NFD')
+	.replace(/[\u0300-\u036f]/g, '')
+	.replace(/\s+/g, '-');
 ---
 
-<article class="tarjeta revelar" style={`--retardo-revelado: ${(indice * 0.08).toFixed(2)}s;`}>
-	<span class="tarjeta__indice" aria-hidden="true">{numero}</span>
+<article class="proyecto revelar" style={`--retardo-revelado: ${((indice - 1) * 0.08).toFixed(2)}s;`}>
+	<div class="proyecto__barra">
+		<span class="proyecto__punto"></span>
+		<span class="proyecto__punto"></span>
+		<span class="proyecto__punto"></span>
+		<span class="proyecto__pestana">{paquete}</span>
+	</div>
 
-	<h3 class="tarjeta__titulo">{proyecto.titulo}</h3>
-	<p class="tarjeta__descripcion">{proyecto.descripcion}</p>
+	<div class="proyecto__cuerpo">
+		<p class="proyecto__linea">
+			<span class="proyecto__prompt">{prompt}</span>
+			<span class="proyecto__comando">apt show {paquete}</span>
+		</p>
 
-	<span class="solo-lectura">{etiquetaTecnologias}</span>
-	<ul class="tarjeta__tecnologias" role="list">
-		{
-			proyecto.tecnologias.map((tecnologia) => (
-				<li class="tarjeta__tecnologia">
-					<IconoTecnologia tecnologia={tecnologia} />
-					<span>{tecnologia}</span>
-				</li>
-			))
-		}
-	</ul>
+		<div class="proyecto__vista" aria-hidden="true">
+			<span class="proyecto__vista-texto">{vistaPrevia}</span>
+		</div>
 
-	<a
-		class="tarjeta__enlace"
-		href={proyecto.enlace}
-		target={esEnlaceExterno ? '_blank' : undefined}
-		rel={esEnlaceExterno ? 'noopener noreferrer' : undefined}
-	>
-		{proyecto.etiquetaEnlace}
-		{esEnlaceExterno && <span class="solo-lectura"> ({abreNuevaPestana})</span>}
-	</a>
+		<h3 class="proyecto__titulo">{proyecto.titulo}</h3>
+		<p class="proyecto__descripcion">{proyecto.descripcion}</p>
+
+		<span class="solo-lectura">{etiquetaTecnologias}</span>
+		<ul class="proyecto__tecnologias" role="list">
+			{
+				proyecto.tecnologias.map((tecnologia) => (
+					<li class="proyecto__tecnologia">
+						<IconoTecnologia tecnologia={tecnologia} />
+						<span>{tecnologia}</span>
+					</li>
+				))
+			}
+		</ul>
+
+		<a
+			class="proyecto__enlace"
+			href={proyecto.enlace}
+			target={esEnlaceExterno ? '_blank' : undefined}
+			rel={esEnlaceExterno ? 'noopener noreferrer' : undefined}
+		>
+			<span class="proyecto__enlace-texto">{proyecto.etiquetaEnlace}</span>
+			{esEnlaceExterno && <span class="solo-lectura"> ({abreNuevaPestana})</span>}
+		</a>
+	</div>
 </article>
