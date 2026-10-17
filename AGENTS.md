@@ -62,8 +62,8 @@ Crear desde cero la landing en Astro y estructurar el proyecto completo (carpeta
 - **Buenas prácticas:** Código limpio, semántico, accesible y optimizado (rendimiento, imágenes optimizadas, responsive y mobile-first).
 - **Rendimiento:** Los efectos y animaciones no deben afectar la fluidez. Respetar `prefers-reduced-motion`.
 - **i18n:** Textos en archivos aparte por idioma, nunca escritos a mano dentro de los componentes.
-- **Formulario:** Validación en el cliente, protección anti-spam (honeypot) y la access key de Web3Forms en variable de entorno (`.env`, con un `.env.example` de referencia).
-- **Despliegue:** Compatible con Vercel; las variables de entorno se cargan desde el panel de Vercel.
+- **Formulario:** Validación en el cliente, protección anti-spam (honeypot) y la access key de Web3Forms embebida en el componente (es una clave publica por diseno). Un `.env` local con `PUBLIC_WEB3FORMS_ACCESS_KEY` puede sobreescribirla (hay un `.env.example` de referencia).
+- **Despliegue:** Compatible con Vercel. Al no depender de variables de entorno propias, el formulario funciona sin configuracion adicional en el panel.
 - **Convenciones de código:** Nombres de variables, funciones, componentes y comentarios en **español**, sin tildes ni "ñ" en los identificadores (ej. `obtenerProyectos`, `TarjetaProyecto`). Las palabras reservadas, atributos HTML y propiedades CSS se mantienen en su forma estándar.
 - **Lo que NO debe hacer:**
   - No usar **React** ni otros frameworks de UI (Vue, Svelte, etc.). Nada de islas de framework.
