@@ -76,63 +76,54 @@ export const pt: Textos = {
 				items: [
 					{
 						nombre: 'Java',
-						descripcion: 'Linguagem principal para a lógica de negócio e as aplicações backend.',
 						destacado: true,
 					},
-										{
+					{
 						nombre: 'MongoDB',
-						descripcion: 'Banco de dados NoSQL para documentos.',
 						destacado: true,
 					},
 					{
 						nombre: 'Spring Boot',
-						descripcion: 'Aplicações backend, serviços e APIs REST.',
 						destacado: true,
 					},
 					{
 						nombre: 'Spring Security',
-						descripcion: 'Autenticação, autorização e proteção de endpoints.',
 						destacado: true,
 					},
 					{
 						nombre: 'JWT',
-						descripcion: 'Tokens para autenticação e sessões seguras.',
 						destacado: true,
 					},
 					{
 						nombre: 'MySQL',
-						descripcion: 'Modelagem relacional, consultas e persistência de dados.',
 						destacado: true,
 					},
 					{
 						nombre: 'REST API',
-						descripcion: 'Design e implementação de serviços entre aplicações.',
 						destacado: true,
 					},
-										{
+					{
 						nombre: 'Docker',
-						descripcion: 'Contêineres para desenvolvimento, implantação e consistência entre ambientes.',
 						destacado: true,
 					},
-										{
+					{
 						nombre: 'Angular',
-						descripcion: 'Interfaces web e integração com serviços backend.',
 						destacado: false,
 					},
-										{ nombre: 'Git', descripcion: 'Controle de versão do código-fonte.', destacado: false },
+					{
+						nombre: 'Git',
+						destacado: false,
+					},
 					{
 						nombre: 'Debian',
-						descripcion: 'Distribuição base do meu ambiente de desenvolvimento.',
 						destacado: false,
 					},
 					{
 						nombre: 'Linux',
-						descripcion: 'Sistema operacional principal e linha de comando.',
 						destacado: false,
 					},
 					{
 						nombre: 'Ubuntu',
-						descripcion: 'Distribuição usada em servidores e desenvolvimento.',
 						destacado: false,
 					},
 				],

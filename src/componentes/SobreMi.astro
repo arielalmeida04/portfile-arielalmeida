@@ -103,10 +103,7 @@ const textos = obtenerTextos(idioma);
 						stacks.principal.items.map((item) => (
 							<li class:list={['tarjeta-tech', { 'tarjeta-tech--destacada': item.destacado }]}>
 								<IconoTecnologia tecnologia={item.nombre} />
-								<div class="tarjeta-tech__cuerpo">
-									<span class="tarjeta-tech__nombre">{item.nombre}</span>
-									<p class="tarjeta-tech__texto">{item.descripcion}</p>
-								</div>
+								<span class="tarjeta-tech__nombre">{item.nombre}</span>
 							</li>
 						))
 					}

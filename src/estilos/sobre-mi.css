@@ -159,7 +159,7 @@
 	color: var(--color-texto-suave);
 }
 
-/* --- Stack principal: tarjetas con descripción ---------------------------- */
+/* --- Stack principal: tarjetas minimalistas (solo icono + nombre) ---------- */
 .tarjetas-tech {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -168,9 +168,12 @@
 
 .tarjeta-tech {
 	display: flex;
-	align-items: flex-start;
-	gap: var(--espacio-sm);
-	padding: var(--espacio-sm);
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--espacio-xs);
+	padding: var(--espacio-sm) var(--espacio-xs);
+	text-align: center;
 	background: var(--superficie-vidrio);
 	backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
 	-webkit-backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
@@ -193,23 +196,10 @@
 	height: 28px;
 }
 
-.tarjeta-tech__cuerpo {
-	display: flex;
-	flex-direction: column;
-	gap: 0.15rem;
-	min-width: 0;
-}
-
 .tarjeta-tech__nombre {
 	font-size: var(--texto-base);
 	font-weight: 600;
 	color: var(--color-texto);
-}
-
-.tarjeta-tech__texto {
-	font-size: var(--texto-xs);
-	line-height: 1.5;
-	color: var(--color-texto-suave);
 }
 
 /* Destacadas: mayor jerarquía con acento azul */
