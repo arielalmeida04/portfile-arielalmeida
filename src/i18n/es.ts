@@ -134,6 +134,7 @@ export const es = {
 				etiqueta: 'Stack secundario',
 				descripcion: 'Tecnologías que complementan mi stack principal.',
 				items: [
+					'TypeScript',
 					'JUnit 5',
 					'Mockito',
 					'HTML5',
@@ -152,7 +153,6 @@ export const es = {
 				etiqueta: 'Stack complementario',
 				descripcion: 'Herramientas y tecnologias que use o estoy aprendiendo',
 				items: [
-					'TypeScript',
 					'FastAPI',
 					'AWS',
 					'Node.js',
@@ -172,7 +172,7 @@ export const es = {
 		},
 		idiomas: {
 			etiqueta: 'Idiomas',
-			valores: ['Español', 'Inglés', 'Portugués'],
+			valores: ['Español (nativo)', 'Inglés (A2)', 'Portugués (B1)'],
 		},
 	},
 
