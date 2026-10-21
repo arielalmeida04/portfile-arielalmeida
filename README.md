@@ -1,41 +1,58 @@
-# Landing Ariel Almeida
+# Landing personal — Ariel Almeida
 
-Landing personal y profesional construida con **Astro + TypeScript**, estilos en **CSS puro**, animaciones con **CSS + IntersectionObserver**, formulario con **Web3Forms** y despliegue en **Vercel**.
+Landing profesional de **Ariel Almeida**, desarrollador **Backend Java**. El front-end está hecho con **Astro + TypeScript** y estilos en **CSS puro**.
 
-## Comandos
+**Sitio en vivo:** https://portfile-arielalmeida.vercel.app/
+
+## Perfil
+
+Desarrollador **Backend Java**, con foco en el ecosistema **Java + Spring Boot**, APIs REST y bases de datos. En este proyecto también trabajo el front-end con Astro, TypeScript y CSS.
+
+## Tecnologías
+
+- **Astro** — framework del sitio (HTML estático y componentes `.astro`).
+- **TypeScript** — tipado estricto.
+- **CSS puro** — glassmorphism, tema claro/oscuro con variables CSS.
+- **i18n** — español, inglés y portugués.
+- **CSS + IntersectionObserver** — animaciones de revelado al hacer scroll.
+- **Web3Forms** — formulario de contacto.
+- **Vercel** — despliegue.
+
+## Cómo iniciarlo en local
+
+Requisitos: **Node.js 22.22 o superior** y **npm**.
 
 ```bash
-npm install          # instalar dependencias
-npm run dev          # servidor de desarrollo
-npm run build        # build de producción (salida en dist/ y .vercel/)
-npm run preview      # previsualizar el build
-npm run check        # chequeo de tipos (TypeScript estricto)
+git clone https://github.com/arielalmeida04/portfile-arielalmeida.git
+cd portfile-arielalmeida
+npm install
+npm run dev
 ```
 
-## Variables de entorno
+Abrí `http://localhost:4321` en el navegador.
 
-Copiá `.env.example` a `.env` y completá la access key de Web3Forms:
+### Otros comandos
 
 ```bash
-WEB3FORMS_ACCESS_KEY=
+npm run build     # build de producción (dist/ y .vercel/)
+npm run preview   # previsualizar el build
+npm run check     # chequeo de tipos
 ```
 
-En Vercel se configura desde **Settings > Environment Variables**.
+## Formulario de contacto
+
+Funciona sin configuración: la access key de Web3Forms es pública y va embebida en el componente. Si querés sobreescribirla en local, creá un `.env` con `PUBLIC_WEB3FORMS_ACCESS_KEY`.
 
 ## Estructura
 
 ```
 src/
-├── componentes/     # componentes Astro por sección (BarraNavegacion, Hero, ...)
-├── estilos/         # variables.css (paleta/tokens) + globales.css (reset y utilidades)
-├── i18n/            # textos por idioma: es.ts, en.ts, pt.ts + index.ts (obtenerTextos)
-├── layouts/         # BaseLayout.astro (html base, meta, navbar, slot)
-├── pages/           # rutas del sitio (index.astro)
-└── scripts/         # JavaScript mínimo del cliente (IntersectionObserver, formulario)
+├── componentes/   # secciones y componentes Astro
+├── estilos/       # variables y estilos por componente
+├── i18n/          # textos en es, en y pt
+├── layouts/       # layout base
+├── pages/         # ruta principal
+└── scripts/       # JS mínimo del cliente
+public/
+└── img/           # imágenes y recursos estáticos
 ```
-
-## Convenciones
-
-- Identificadores y comentarios en **español**, sin tildes ni `ñ` (`obtenerProyectos`, `TarjetaProyecto`).
-- Textos **nunca** escritos dentro de los componentes: siempre desde `src/i18n`.
-- Sin frameworks de UI (React/Vue/Svelte), sin Tailwind ni GSAP.
