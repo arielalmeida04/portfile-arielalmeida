@@ -14,13 +14,13 @@ interface Props {
 	etiquetaTecnologias: string;
 	/** Texto accesible para enlaces que abren en otra pestaña. */
 	abreNuevaPestana: string;
-	/** Texto del recuadro de vista previa. */
-	vistaPrevia: string;
+	/** Texto de la cinta de estado para proyectos en desarrollo. */
+	textoCinta: string;
 	/** Prompt simulado de la terminal. */
 	prompt: string;
 }
 
-const { proyecto, indice, etiquetaTecnologias, abreNuevaPestana, vistaPrevia, prompt } = Astro.props;
+const { proyecto, indice, etiquetaTecnologias, abreNuevaPestana, textoCinta, prompt } = Astro.props;
 
 const esEnlaceExterno = /^https?:\/\//.test(proyecto.enlace);
 
@@ -46,9 +46,24 @@ const paquete = proyecto.titulo
 			<span class="proyecto__comando">apt show {paquete}</span>
 		</p>
 
-		<div class="proyecto__vista" aria-hidden="true">
-			<span class="proyecto__vista-texto">{vistaPrevia}</span>
-		</div>
+		<figure class="proyecto__vista">
+			<img
+				class="proyecto__imagen"
+				src={proyecto.imagen}
+				alt={proyecto.altImagen}
+				width="800"
+				height="500"
+				loading="lazy"
+				decoding="async"
+			/>
+			{
+				proyecto.estado === 'desarrollo' && (
+					<span class="proyecto__cinta">
+						<span class="proyecto__cinta-texto">{textoCinta}</span>
+					</span>
+				)
+			}
+		</figure>
 
 		<h3 class="proyecto__titulo">{proyecto.titulo}</h3>
 		<p class="proyecto__descripcion">{proyecto.descripcion}</p>
@@ -65,14 +80,18 @@ const paquete = proyecto.titulo
 			}
 		</ul>
 
-		<a
-			class="proyecto__enlace"
-			href={proyecto.enlace}
-			target={esEnlaceExterno ? '_blank' : undefined}
-			rel={esEnlaceExterno ? 'noopener noreferrer' : undefined}
-		>
-			<span class="proyecto__enlace-texto">{proyecto.etiquetaEnlace}</span>
-			{esEnlaceExterno && <span class="solo-lectura"> ({abreNuevaPestana})</span>}
-		</a>
+		{
+			proyecto.estado !== 'desarrollo' && (
+				<a
+					class="proyecto__enlace"
+					href={proyecto.enlace}
+					target={esEnlaceExterno ? '_blank' : undefined}
+					rel={esEnlaceExterno ? 'noopener noreferrer' : undefined}
+				>
+					<span class="proyecto__enlace-texto">{proyecto.etiquetaEnlace}</span>
+					{esEnlaceExterno && <span class="solo-lectura"> ({abreNuevaPestana})</span>}
+				</a>
+			)
+		}
 	</div>
 </article>

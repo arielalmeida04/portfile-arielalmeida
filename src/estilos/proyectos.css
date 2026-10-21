@@ -2,6 +2,11 @@
    Sección Proyectos: grilla responsive de tarjetas de vidrio.
    ========================================================================== */
 
+/* Las cartas necesitan mas ancho que el resto de las secciones. */
+.proyectos {
+	--ancho-max: 1360px;
+}
+
 .proyectos__lista {
 	display: grid;
 	gap: var(--espacio-md);
@@ -21,5 +26,11 @@
 @media (min-width: 48rem) {
 	.proyectos__lista {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 64rem) {
+	.proyectos__lista {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }

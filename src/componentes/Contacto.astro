@@ -13,8 +13,14 @@ const { idioma = idiomaPorDefecto } = Astro.props;
 const textos = obtenerTextos(idioma);
 const { titulo, descripcion, redes: etiquetasRedes, formulario } = textos.contacto;
 
-/** Access key pública de Web3Forms (variable de entorno del build). */
-const claveWeb3Forms = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+/**
+ * Access key de Web3Forms. Es una clave PUBLICA por diseno (ver documentacion),
+ * por eso va embebida y asi no depende de variables de entorno en el hosting.
+ * Si existe `PUBLIC_WEB3FORMS_ACCESS_KEY` (por ejemplo en un `.env` local),
+ * tiene prioridad; sirve para rotar la clave sin tocar el codigo.
+ */
+const claveWeb3Forms =
+	import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || '3fc1421d-2a58-4846-abdc-703a261fdc0e';
 
 /** Campo del formulario y sus atributos ya traducidos. */
 interface CampoFormulario {

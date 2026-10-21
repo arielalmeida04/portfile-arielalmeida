@@ -30,7 +30,7 @@ Actúa como un **desarrollador senior** con amplia experiencia en **Astro** y bu
 1. **Navbar fija (arriba):** Links a cada sección con scroll suave hacia el ancla correspondiente.
 2. **Inicio (Hero):** Animación de entrada que simula una **ventana de código / terminal** escribiéndose sola, con mi nombre y título profesional.
 3. **Sobre mí:** Presentación personal con mi foto de LinkedIn.
-4. **Proyectos:** **4 tarjetas** de proyectos. Con contenido de ejemplo (placeholders) que voy a reemplazar cuando los termine. Cada tarjeta se muestra como una ventana de terminal (barra con pestaña, comando `apt show` y vista previa) con título, descripción, tecnologías y link.
+4. **Proyectos:** **3 tarjetas** de proyectos (Coco Beautty, Veltoro Novano y un sistema de reserva de turnos). Cada tarjeta se muestra como una ventana de terminal (barra con pestaña, comando `apt show`) con una imagen de vista previa, una cinta de "EN DESARROLLO", título, descripción, tecnologías y link.
 5. **Contacto:**
    - Enlaces a mis redes: **LinkedIn** y **GitHub**.
    - Formulario de contacto debajo, enviado con **Web3Forms**.
@@ -62,8 +62,8 @@ Crear desde cero la landing en Astro y estructurar el proyecto completo (carpeta
 - **Buenas prácticas:** Código limpio, semántico, accesible y optimizado (rendimiento, imágenes optimizadas, responsive y mobile-first).
 - **Rendimiento:** Los efectos y animaciones no deben afectar la fluidez. Respetar `prefers-reduced-motion`.
 - **i18n:** Textos en archivos aparte por idioma, nunca escritos a mano dentro de los componentes.
-- **Formulario:** Validación en el cliente, protección anti-spam (honeypot) y la access key de Web3Forms en variable de entorno (`.env`, con un `.env.example` de referencia).
-- **Despliegue:** Compatible con Vercel; las variables de entorno se cargan desde el panel de Vercel.
+- **Formulario:** Validación en el cliente, protección anti-spam (honeypot) y la access key de Web3Forms embebida en el componente (es una clave publica por diseno). Un `.env` local con `PUBLIC_WEB3FORMS_ACCESS_KEY` puede sobreescribirla (hay un `.env.example` de referencia).
+- **Despliegue:** Compatible con Vercel. Al no depender de variables de entorno propias, el formulario funciona sin configuracion adicional en el panel.
 - **Convenciones de código:** Nombres de variables, funciones, componentes y comentarios en **español**, sin tildes ni "ñ" en los identificadores (ej. `obtenerProyectos`, `TarjetaProyecto`). Las palabras reservadas, atributos HTML y propiedades CSS se mantienen en su forma estándar.
 - **Lo que NO debe hacer:**
   - No usar **React** ni otros frameworks de UI (Vue, Svelte, etc.). Nada de islas de framework.
