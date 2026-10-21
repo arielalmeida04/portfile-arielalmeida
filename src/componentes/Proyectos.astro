@@ -10,7 +10,7 @@ interface Props {
 
 const { idioma = idiomaPorDefecto } = Astro.props;
 const textos = obtenerTextos(idioma);
-const { titulo, placeholders, etiquetaTecnologias, abreNuevaPestana, vistaPrevia, prompt } =
+const { titulo, placeholders, etiquetaTecnologias, abreNuevaPestana, prompt, cintaDesarrollo } =
 	textos.proyectos;
 ---
 
@@ -27,7 +27,7 @@ const { titulo, placeholders, etiquetaTecnologias, abreNuevaPestana, vistaPrevia
 							indice={indice + 1}
 							etiquetaTecnologias={etiquetaTecnologias}
 							abreNuevaPestana={abreNuevaPestana}
-							vistaPrevia={vistaPrevia}
+							textoCinta={cintaDesarrollo}
 							prompt={prompt}
 						/>
 					</li>

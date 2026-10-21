@@ -1,7 +1,7 @@
 /* ==========================================================================
    Tarjeta de proyecto: ventana de terminal minimalista.
-   Barra con semaforo, cuerpo monoespaciado, recuadro de vista previa y
-   enlace estilo comando.
+   Barra con semaforo, cuerpo monoespaciado, imagen de vista previa con cinta
+   de estado y enlace estilo comando.
    ========================================================================== */
 
 .proyecto {
@@ -33,7 +33,7 @@
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
-	padding: 0.65rem 1rem;
+	padding: 0.7rem 1.15rem;
 	border-bottom: 1px solid var(--borde-vidrio);
 	background: var(--superficie-vidrio-suave);
 }
@@ -58,7 +58,7 @@
 
 .proyecto__pestana {
 	margin-left: var(--espacio-xs);
-	font-size: var(--texto-xs);
+	font-size: var(--texto-sm);
 	color: var(--color-texto-tenue);
 	white-space: nowrap;
 	overflow: hidden;
@@ -71,14 +71,14 @@
 	flex: 1;
 	flex-direction: column;
 	gap: var(--espacio-sm);
-	padding: var(--espacio-md) 1.15rem 1.25rem;
+	padding: var(--espacio-md) 1.35rem 1.5rem;
 }
 
 .proyecto__linea {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.6ch;
-	font-size: var(--texto-xs);
+	font-size: var(--texto-sm);
 	color: var(--color-texto-tenue);
 }
 
@@ -90,53 +90,60 @@
 	color: var(--color-texto);
 }
 
-/* --- Recuadro de vista previa (placeholder grafico) ----------------------- */
+/* --- Imagen de vista previa y cinta de estado ----------------------------- */
 .proyecto__vista {
 	position: relative;
-	display: grid;
-	place-items: center;
+	margin: 0;
 	aspect-ratio: 16 / 10;
 	border: 1px solid var(--borde-vidrio);
 	border-radius: var(--radio-sm);
-	background:
-		repeating-linear-gradient(0deg, transparent 0 15px, var(--borde-vidrio) 15px 16px),
-		repeating-linear-gradient(90deg, transparent 0 15px, var(--borde-vidrio) 15px 16px),
-		linear-gradient(135deg, color-mix(in srgb, var(--color-cian) 10%, transparent), transparent 65%),
-		var(--superficie-vidrio-suave);
+	background: var(--superficie-vidrio-suave);
 	overflow: hidden;
 }
 
-.proyecto__vista::after {
-	content: '';
+.proyecto__imagen {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.6s var(--curva);
+}
+
+.proyecto:hover .proyecto__imagen,
+.proyecto:focus-within .proyecto__imagen {
+	transform: scale(1.04);
+}
+
+.proyecto__cinta {
 	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		115deg,
-		transparent 42%,
-		color-mix(in srgb, var(--color-cian) 24%, transparent) 50%,
-		transparent 58%
-	);
-	transform: translateX(-120%);
-	transition: transform 0.75s var(--curva);
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	padding: 0.3rem 0.5rem;
+	background: repeating-linear-gradient(45deg, #f2c200 0 12px, #151515 12px 24px);
+	border-bottom: 2px solid #151515;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+	pointer-events: none;
 }
 
-.proyecto:hover .proyecto__vista::after {
-	transform: translateX(120%);
-}
-
-.proyecto__vista-texto {
-	position: relative;
-	font-size: var(--texto-xs);
-	letter-spacing: 0.18em;
+.proyecto__cinta-texto {
+	padding: 0.24rem 0.9rem;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
 	text-transform: uppercase;
-	color: var(--color-texto-tenue);
-	opacity: 0.75;
+	color: #151515;
+	background: #f2c200;
+	border-radius: 2px;
+	white-space: nowrap;
 }
 
 /* --- Textos --------------------------------------------------------------- */
 .proyecto__titulo {
 	font-family: var(--fuente-mono);
-	font-size: var(--texto-base);
+	font-size: var(--texto-lg);
 	font-weight: 600;
 	color: var(--color-texto);
 }
@@ -144,8 +151,8 @@
 .proyecto__descripcion {
 	flex-grow: 1;
 	font-family: var(--fuente-sans);
-	font-size: var(--texto-sm);
-	line-height: 1.55;
+	font-size: var(--texto-base);
+	line-height: 1.6;
 	color: var(--color-texto-suave);
 }
 
@@ -163,8 +170,8 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 0.4rem;
-	padding: 0.3rem 0.75rem 0.3rem 0.6rem;
-	font-size: var(--texto-xs);
+	padding: 0.35rem 0.85rem 0.35rem 0.7rem;
+	font-size: var(--texto-sm);
 	font-weight: 500;
 	color: var(--color-texto);
 	background: var(--superficie-vidrio-fuerte);
@@ -217,7 +224,8 @@
 		transform: none;
 	}
 
-	.proyecto:hover .proyecto__vista::after {
-		transform: translateX(-120%);
+	.proyecto:hover .proyecto__imagen,
+	.proyecto:focus-within .proyecto__imagen {
+		transform: none;
 	}
 }

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <rect width="800" height="500" fill="#fdf1f4"/>
+
+  <rect width="800" height="64" fill="#ffffff"/>
+  <circle cx="40" cy="32" r="12" fill="#d95c82"/>
+  <text x="62" y="39" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#3d2530" letter-spacing="1">COCO BEAUTTY</text>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#b56b82">
+    <text x="480" y="38">Tienda</text>
+    <text x="545" y="38">Colecciones</text>
+    <text x="655" y="38">Ofertas</text>
+  </g>
+  <circle cx="745" cy="32" r="14" fill="#f7dde5"/>
+  <path d="M739 32h12M745 26v12" stroke="#b56b82" stroke-width="2.5" stroke-linecap="round"/>
+
+  <rect x="40" y="92" width="720" height="196" rx="18" fill="#f7dde5"/>
+  <text x="72" y="152" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#3d2530">Glow every day</text>
+  <text x="72" y="184" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#8a5567">Maquillaje que resalta tu luz natural.</text>
+  <rect x="72" y="210" width="128" height="40" rx="20" fill="#d95c82"/>
+  <text x="136" y="235" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#ffffff">Comprar ahora</text>
+
+  <g>
+    <rect x="548" y="128" width="42" height="112" rx="10" fill="#8c2f4d"/>
+    <rect x="548" y="128" width="42" height="34" rx="8" fill="#d95c82"/>
+    <rect x="560" y="170" width="18" height="52" rx="4" fill="#f7dde5"/>
+
+    <rect x="606" y="158" width="82" height="82" rx="12" fill="#f0a8bf"/>
+    <circle cx="631" cy="184" r="9" fill="#a14d68"/>
+    <circle cx="663" cy="184" r="9" fill="#e8c46a"/>
+    <circle cx="631" cy="214" r="9" fill="#d95c82"/>
+    <circle cx="663" cy="214" r="9" fill="#f7dde5"/>
+
+    <rect x="704" y="166" width="38" height="74" rx="12" fill="#e9b7c8"/>
+    <rect x="712" y="150" width="22" height="20" rx="4" fill="#8c2f4d"/>
+    <rect x="712" y="196" width="22" height="26" rx="4" fill="#ffffff" opacity="0.75"/>
+  </g>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <rect x="40" y="316" width="220" height="150" rx="14" fill="#ffffff"/>
+    <rect x="64" y="340" width="46" height="52" rx="8" fill="#e9b7c8"/>
+    <rect x="64" y="340" width="46" height="18" rx="6" fill="#8c2f4d"/>
+    <text x="64" y="418" font-size="15" font-weight="600" fill="#3d2530">Labial mate</text>
+    <text x="64" y="442" font-size="14" fill="#b56b82">$ 8.500</text>
+    <circle cx="228" cy="432" r="14" fill="#f7dde5"/>
+    <path d="M222 432h12M228 426v12" stroke="#d95c82" stroke-width="2.5" stroke-linecap="round"/>
+
+    <rect x="290" y="316" width="220" height="150" rx="14" fill="#ffffff"/>
+    <rect x="314" y="340" width="56" height="52" rx="8" fill="#f0a8bf"/>
+    <circle cx="328" cy="358" r="7" fill="#a14d68"/>
+    <circle cx="352" cy="358" r="7" fill="#e8c46a"/>
+    <circle cx="328" cy="378" r="7" fill="#d95c82"/>
+    <circle cx="352" cy="378" r="7" fill="#f7dde5"/>
+    <text x="314" y="418" font-size="15" font-weight="600" fill="#3d2530">Paleta glow</text>
+    <text x="314" y="442" font-size="14" fill="#b56b82">$ 15.900</text>
+    <circle cx="478" cy="432" r="14" fill="#f7dde5"/>
+    <path d="M472 432h12M478 426v12" stroke="#d95c82" stroke-width="2.5" stroke-linecap="round"/>
+
+    <rect x="540" y="316" width="220" height="150" rx="14" fill="#ffffff"/>
+    <rect x="564" y="340" width="42" height="52" rx="10" fill="#e9b7c8"/>
+    <rect x="572" y="332" width="26" height="14" rx="4" fill="#8c2f4d"/>
+    <text x="564" y="418" font-size="15" font-weight="600" fill="#3d2530">Serum vitamina C</text>
+    <text x="564" y="442" font-size="14" fill="#b56b82">$ 12.400</text>
+    <circle cx="728" cy="432" r="14" fill="#f7dde5"/>
+    <path d="M722 432h12M728 426v12" stroke="#d95c82" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</svg>

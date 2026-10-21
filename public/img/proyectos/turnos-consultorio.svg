@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <rect width="800" height="500" fill="#eef6f7"/>
+
+  <rect width="800" height="64" fill="#ffffff"/>
+  <circle cx="40" cy="32" r="12" fill="#137c8b"/>
+  <text x="62" y="38" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="19" font-weight="700" fill="#123c44" letter-spacing="1">TURNOS</text>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" fill="#5f8790">
+    <text x="520" y="38">Especialistas</text>
+    <text x="625" y="38">Mi agenda</text>
+    <text x="715" y="38">Ayuda</text>
+  </g>
+
+  <text x="40" y="104" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#123c44">Reserva de turnos</text>
+  <text x="40" y="128" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#5f8790">Elegi especialista, dia y horario.</text>
+
+  <rect x="40" y="152" width="300" height="314" rx="16" fill="#ffffff"/>
+  <text x="64" y="186" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#123c44">Especialistas</text>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <rect x="60" y="204" width="260" height="72" rx="12" fill="#e6f3f5"/>
+    <circle cx="94" cy="240" r="20" fill="#137c8b"/>
+    <text x="94" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">MG</text>
+    <text x="126" y="234" font-size="14" font-weight="600" fill="#123c44">Dra. Marina Gil</text>
+    <text x="126" y="254" font-size="12" fill="#5f8790">Clinica medica</text>
+    <circle cx="300" cy="240" r="5" fill="#2fb67c"/>
+
+    <rect x="60" y="288" width="260" height="72" rx="12" fill="#ffffff" stroke="#d6e7ea"/>
+    <circle cx="94" cy="324" r="20" fill="#4c7fa8"/>
+    <text x="94" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">JP</text>
+    <text x="126" y="318" font-size="14" font-weight="600" fill="#123c44">Dr. Julian Paz</text>
+    <text x="126" y="338" font-size="12" fill="#5f8790">Dermatologia</text>
+    <circle cx="300" cy="324" r="5" fill="#2fb67c"/>
+
+    <rect x="60" y="372" width="260" height="72" rx="12" fill="#ffffff" stroke="#d6e7ea"/>
+    <circle cx="94" cy="408" r="20" fill="#8a6bb0"/>
+    <text x="94" y="414" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">LR</text>
+    <text x="126" y="402" font-size="14" font-weight="600" fill="#123c44">Lic. Lucia Ruiz</text>
+    <text x="126" y="422" font-size="12" fill="#5f8790">Nutricion</text>
+    <circle cx="300" cy="408" r="5" fill="#f0b429"/>
+  </g>
+
+  <rect x="360" y="152" width="400" height="314" rx="16" fill="#ffffff"/>
+  <text x="384" y="186" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="700" fill="#123c44">Mayo 2026</text>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="11" fill="#5f8790" text-anchor="middle">
+    <text x="410" y="214">L</text>
+    <text x="474" y="214">M</text>
+    <text x="538" y="214">M</text>
+    <text x="602" y="214">J</text>
+    <text x="666" y="214">V</text>
+    <text x="730" y="214">S</text>
+  </g>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="13" text-anchor="middle">
+    <rect x="384" y="232" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="410" y="259" fill="#123c44">1</text>
+    <rect x="448" y="232" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="474" y="259" fill="#123c44">2</text>
+    <rect x="512" y="232" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="538" y="259" fill="#123c44">3</text>
+    <rect x="576" y="232" width="52" height="44" rx="8" fill="#137c8b"/>
+    <text x="602" y="259" fill="#ffffff">4</text>
+    <rect x="640" y="232" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="666" y="259" fill="#123c44">5</text>
+    <rect x="704" y="232" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="730" y="259" fill="#123c44">6</text>
+
+    <rect x="384" y="284" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="410" y="311" fill="#123c44">7</text>
+    <rect x="448" y="284" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="474" y="311" fill="#123c44">8</text>
+    <rect x="512" y="284" width="52" height="44" rx="8" fill="#137c8b"/>
+    <text x="538" y="311" fill="#ffffff">9</text>
+    <rect x="576" y="284" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="602" y="311" fill="#123c44">10</text>
+    <rect x="640" y="284" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="666" y="311" fill="#123c44">11</text>
+    <rect x="704" y="284" width="52" height="44" rx="8" fill="#137c8b"/>
+    <text x="730" y="311" fill="#ffffff">12</text>
+
+    <rect x="384" y="336" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="410" y="363" fill="#123c44">13</text>
+    <rect x="448" y="336" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="474" y="363" fill="#123c44">14</text>
+    <rect x="512" y="336" width="52" height="44" rx="8" fill="#137c8b"/>
+    <text x="538" y="363" fill="#ffffff">15</text>
+    <rect x="576" y="336" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="602" y="363" fill="#123c44">16</text>
+    <rect x="640" y="336" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="666" y="363" fill="#123c44">17</text>
+    <rect x="704" y="336" width="52" height="44" rx="8" fill="#ffffff" stroke="#d6e7ea"/>
+    <text x="730" y="363" fill="#123c44">18</text>
+  </g>
+
+  <text x="384" y="404" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#5f8790">Horarios disponibles</text>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" text-anchor="middle">
+    <rect x="384" y="414" width="54" height="26" rx="13" fill="#e6f3f5"/>
+    <text x="411" y="431" fill="#123c44">09:00</text>
+    <rect x="448" y="414" width="54" height="26" rx="13" fill="#137c8b"/>
+    <text x="475" y="431" fill="#ffffff">09:30</text>
+    <rect x="512" y="414" width="54" height="26" rx="13" fill="#e6f3f5"/>
+    <text x="539" y="431" fill="#123c44">10:00</text>
+    <rect x="576" y="414" width="54" height="26" rx="13" fill="#e6f3f5"/>
+    <text x="603" y="431" fill="#123c44">10:30</text>
+  </g>
+</svg>

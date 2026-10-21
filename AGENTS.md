@@ -30,7 +30,7 @@ Actúa como un **desarrollador senior** con amplia experiencia en **Astro** y bu
 1. **Navbar fija (arriba):** Links a cada sección con scroll suave hacia el ancla correspondiente.
 2. **Inicio (Hero):** Animación de entrada que simula una **ventana de código / terminal** escribiéndose sola, con mi nombre y título profesional.
 3. **Sobre mí:** Presentación personal con mi foto de LinkedIn.
-4. **Proyectos:** **4 tarjetas** de proyectos. Con contenido de ejemplo (placeholders) que voy a reemplazar cuando los termine. Cada tarjeta se muestra como una ventana de terminal (barra con pestaña, comando `apt show` y vista previa) con título, descripción, tecnologías y link.
+4. **Proyectos:** **3 tarjetas** de proyectos (Coco Beautty, Veltoro Novano y un sistema de reserva de turnos). Cada tarjeta se muestra como una ventana de terminal (barra con pestaña, comando `apt show`) con una imagen de vista previa, una cinta de "EN DESARROLLO", título, descripción, tecnologías y link.
 5. **Contacto:**
    - Enlaces a mis redes: **LinkedIn** y **GitHub**.
    - Formulario de contacto debajo, enviado con **Web3Forms**.
