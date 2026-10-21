@@ -98,14 +98,14 @@
 	/* Separación vertical entre secciones (mayor que el ritmo interno) */
 	--espacio-seccion: clamp(4.5rem, 3rem + 5vw, 7rem);
 
-	--ancho-max: 1160px;
+	--ancho-max: 875px;
 	--ancho-texto: 62ch;
-	--navbar-alto: 64px;
+	--navbar-alto: 49px;
 
 	/* --- Radios suaves y modernos --- */
-	--radio: 18px;
-	--radio-sm: 12px;
-	--radio-lg: 22px;
+	--radio: 14px;
+	--radio-sm: 10px;
+	--radio-lg: 18px;
 	--radio-pill: 999px;
 
 	/* --- Transiciones --- */

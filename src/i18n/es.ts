@@ -53,8 +53,8 @@ export const es = {
 		nombre: 'Martín Ariel Almeida',
 		rol: 'Desarrollador Backend Java',
 		presentacion: [
-			'Soy Martín Ariel Almeida, Técnico Universitario en Programación por la Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
-			'Oriento mi carrera al desarrollo backend, con especial interés en el ecosistema Java y Spring Boot, la construcción de APIs REST, la gestión de bases de datos y el desarrollo de aplicaciones web robustas, seguras y escalables.',
+			'Técnico Universitario en Programación por la Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
+			'Elegí el camino de Desarrollador Backend, con especial interés en el ecosistema Java y Spring Boot, la construcción de APIs REST, la gestión de bases de datos y el desarrollo de aplicaciones web robustas, seguras y escalables. También estuve usando FastAPI en Python, ya que en la facultad tuvimos que hacer varios proyectos, y eso reforzó mi gran interés por el backend.',
 			'Me interesa desarrollar soluciones que resuelvan problemas reales, aplicando buenas prácticas de programación, principios de diseño, arquitectura de software y herramientas modernas de desarrollo.',
 		],
 		formacion: {

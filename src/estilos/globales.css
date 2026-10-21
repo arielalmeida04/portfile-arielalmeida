@@ -20,6 +20,7 @@ html {
 	scroll-behavior: smooth;
 	scroll-padding-top: calc(var(--navbar-alto) + 1.5rem);
 	-webkit-text-size-adjust: 100%;
+	font-size: 75.9375%;
 }
 
 body {
