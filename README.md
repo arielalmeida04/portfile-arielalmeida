@@ -41,7 +41,7 @@ npm run check     # chequeo de tipos
 
 ## Formulario de contacto
 
-Funciona sin configuración: la access key de Web3Forms es pública y va embebida en el componente. Si querés sobreescribirla en local, creá un `.env` con `PUBLIC_WEB3FORMS_ACCESS_KEY` (hay un `.env.example` de referencia).
+Funciona sin configuración: la access key de Web3Forms es pública y va embebida en el componente. Si querés sobreescribirla en local, creá un `.env` con `PUBLIC_WEB3FORMS_ACCESS_KEY`.
 
 ## Estructura
 
