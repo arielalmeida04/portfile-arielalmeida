@@ -316,6 +316,8 @@
 	flex-direction: column;
 	gap: var(--espacio-md);
 	margin-top: var(--espacio-xl);
+	max-width: 64rem;
+	margin-inline: auto;
 	padding: var(--espacio-md);
 	background: var(--superficie-vidrio);
 	backdrop-filter: blur(var(--blur-vidrio)) saturate(var(--saturacion-vidrio));
@@ -361,7 +363,7 @@
 
 .carrusel__imagen {
 	flex: 0 0 auto;
-	width: min(100%, 48rem);
+	width: min(100%, 42.5rem);
 	height: auto;
 	border-radius: var(--radio-lg);
 	border: 1px solid var(--borde-vidrio);

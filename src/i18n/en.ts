@@ -51,8 +51,8 @@ export const en: Textos = {
 		nombre: 'Martín Ariel Almeida',
 		rol: 'Java Backend Developer',
 		presentacion: [
-			'I am Martín Ariel Almeida, a University Technician in Programming from the Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
-			'I am focusing my career on backend development, with a special interest in the Java and Spring Boot ecosystem, REST API design, database management and the development of robust, secure and scalable web applications.',
+			'University Technician in Programming from the Universidad Tecnológica Nacional (UTN), Facultad Regional Paraná, Entre Ríos, Argentina.',
+			'I chose the Backend Developer path, with a special interest in the Java and Spring Boot ecosystem, REST API design, database management and the development of robust, secure and scalable web applications. I have also been using FastAPI with Python, since we had to build several projects at university, and that reinforced my strong interest in backend development.',
 			'I am interested in building solutions that solve real problems, applying good programming practices, design principles, software architecture and modern development tools.',
 		],
 		formacion: {

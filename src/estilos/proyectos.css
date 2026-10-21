@@ -4,7 +4,7 @@
 
 /* Las cartas necesitan mas ancho que el resto de las secciones. */
 .proyectos {
-	--ancho-max: 1360px;
+	--ancho-max: 1004px;
 }
 
 .proyectos__lista {
